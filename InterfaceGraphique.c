@@ -29,6 +29,7 @@ int main(void)
 
         BeginDrawing();
         ClearBackground(BLACK);
+        
         DrawCircle(ScreenWidth/2, ScreenHeight/2, 25, YELLOW);
         
         DrawCircle(positionX, positionY, 10, BLUE);

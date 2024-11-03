@@ -1,4 +1,4 @@
-#include <stdlib.h>
+
 #include <math.h>
 
 
@@ -27,10 +27,3 @@ void GetNextPosition(Planet P, Planet S){
 
 
 
-
-
-
-int main(){
-    
-    return EXIT_SUCCESS;
-}
