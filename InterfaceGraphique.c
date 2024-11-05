@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+#define PERIODE 5
+
 int main(void)
 {
     const int ScreenWidth = 800;
@@ -12,6 +14,9 @@ int main(void)
     float positionY = 0.0f;
     float R = 100;
     float rad = 0.0;
+    double actualTime;
+    double previousTime = GetTime();
+    double deltaTime = 0;
 
     SetTargetFPS(60);
     
@@ -23,8 +28,8 @@ int main(void)
     while (!WindowShouldClose())
     {
 
-        positionX = ScreenWidth/2 + R * cosf(rad);
-        positionY = ScreenHeight/2 + R * sinf(rad); //On incrémente la position de oméga à chaque boucle (une boucle = 1 frame)
+        positionX = (float)ScreenWidth/2 + R * cosf(((2*PI)/PERIODE)*deltaTime);
+        positionY = (float)ScreenHeight/2 + R * sinf(((2*PI)/PERIODE)*deltaTime); //On incrémente la position de oméga à chaque boucle (une boucle = 1 frame)
 
 
         BeginDrawing();
@@ -37,6 +42,11 @@ int main(void)
         EndDrawing();
 
         rad += 2*PI/120;
+        
+        actualTime = GetTime();
+        deltaTime += actualTime - previousTime;
+        previousTime = actualTime;
+
     }
 
     CloseWindow();
