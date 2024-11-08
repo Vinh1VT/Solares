@@ -27,6 +27,7 @@ int main(void)
     //Caméra
     Camera2D camera = {0};
     camera.zoom = 1.0f;
+    camera.target = (Vector2){0,0};
 
 
     while (!WindowShouldClose())
@@ -37,11 +38,11 @@ int main(void)
         P.Pos_y = (float)ScreenHeight/2 + R * sinf(((2*PI)/PERIODE)*deltaTime); //On incrémente la position de oméga à chaque boucle (une boucle = 1 frame)
         camera.zoom += GetMouseWheelMove() * 0.10f;
 
-        if (IsMouseButtonDown(0))
-            {
-                camera.target = (Vector2){GetMouseX()-ScreenWidth/2,GetMouseY()-ScreenHeight/2};
-                printf("%d %d \n",GetMouseX(),GetMouseY());
-            }
+        if(IsKeyDown(KEY_UP)) camera.target.y += 2;
+        if(IsKeyDown(KEY_DOWN)) camera.target.y -= 2;
+        if(IsKeyDown(KEY_RIGHT)) camera.target.x -= 2;
+        if(IsKeyDown(KEY_LEFT)) camera.target.x += 2;
+
         BeginDrawing();
         ClearBackground(BLACK);
         
