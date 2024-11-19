@@ -6,24 +6,35 @@
 
 #define PERIODE 5
 
+
+
+int main(void)
+{
+    const int ScreenWidth = 1000;
+    const int ScreenHeight = 1000;
+
 Planet Soleil ={
 .Mass = 1E25,
-.Pos_x= 400,
-.Pos_y= 225,
+.Pos_x= ScreenWidth/2,
+.Pos_y= ScreenHeight/2,
 .Vitesse_x = 0,
 .Vitesse_y = 0};
 
 Planet Terre ={
 .Mass = 1,
-.Pos_x = 600,
-.Pos_y = 225,
+.Pos_x = Soleil.Pos_x + 200,
+.Pos_y = Soleil.Pos_y,
 .Vitesse_x = 0,
 .Vitesse_y = -58};
 
-int main(void)
-{
-    const int ScreenWidth = 800;
-    const int ScreenHeight = 450;
+Planet Mars ={
+.Mass = 0.1,
+.Pos_x = Soleil.Pos_x-400,
+.Pos_y = Soleil.Pos_y, 
+.Vitesse_x = 0,
+.Vitesse_y = 40
+};
+
 /*
     Planet P;
     P.Pos_x = 0.0f;
@@ -50,16 +61,21 @@ int main(void)
         BeginDrawing();
         ClearBackground(BLACK);
 
-        DrawCircle(ScreenWidth/2, ScreenHeight/2, 25, YELLOW);
+        DrawCircle(Soleil.Pos_x, Soleil.Pos_y, 25, YELLOW);
         DrawCircle(Terre.Pos_x, Terre.Pos_y, 10, BLUE);
+        DrawCircle(Mars.Pos_x, Mars.Pos_y, 10, RED);
 
         EndDrawing();
 
         actualTime = GetTime();
         deltaTime = (actualTime - previousTime);
         previousTime = actualTime;
+        //GetNextPosition(&Terre, Mars, deltaTime);
+        //GetNextPosition(&Mars, Terre, deltaTime);
         GetNextPosition(&Terre, Soleil, deltaTime);
-        float V = sqrt((Terre.Vitesse_x*Terre.Vitesse_x)+(Terre.Vitesse_y*Terre.Vitesse_y)); 
+        GetNextPosition(&Mars, Soleil, deltaTime);
+        
+        //float V = sqrt((Terre.Vitesse_x*Terre.Vitesse_x)+(Terre.Vitesse_y*Terre.Vitesse_y)); 
         //printf("%f %f %f \n", Terre.Vitesse_x, Terre.Vitesse_y, V);
     }
 
