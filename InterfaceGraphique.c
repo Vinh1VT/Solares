@@ -7,7 +7,7 @@
 #define PERIODE 5
 
 Planet Soleil ={
-.Mass = 100,
+.Mass = 1E25,
 .Pos_x= 400,
 .Pos_y= 225,
 .Vitesse_x = 0,
@@ -18,7 +18,7 @@ Planet Terre ={
 .Pos_x = 600,
 .Pos_y = 225,
 .Vitesse_x = 0,
-.Vitesse_y = -0.5};
+.Vitesse_y = -58};
 
 int main(void)
 {
@@ -56,10 +56,11 @@ int main(void)
         EndDrawing();
 
         actualTime = GetTime();
-        deltaTime += actualTime - previousTime;
+        deltaTime = (actualTime - previousTime);
         previousTime = actualTime;
         GetNextPosition(&Terre, Soleil, deltaTime);
-
+        float V = sqrt((Terre.Vitesse_x*Terre.Vitesse_x)+(Terre.Vitesse_y*Terre.Vitesse_y)); 
+        //printf("%f %f %f \n", Terre.Vitesse_x, Terre.Vitesse_y, V);
     }
 
     CloseWindow();

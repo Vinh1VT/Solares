@@ -3,7 +3,7 @@
 #include "raylib.h"
 
 /* Quelques constantes*/
-float G = 1;
+float G = 6.67E-20;
 
 
 /* Retourne le rayon entre P et T, peu importe l'ordre*/
