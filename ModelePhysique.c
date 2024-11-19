@@ -5,19 +5,6 @@
 /* Quelques constantes*/
 float G = 1;
 
-Planet Soleil ={
-.Mass = 100,
-.Pos_x= 400,
-.Pos_y= 225,
-.Vitesse_x = 0,
-.Vitesse_y = 0};
-
-Planet Terre ={
-.Mass = 1,
-.Pos_x = 600,
-.Pos_y = 225,
-.Vitesse_x = 0,
-.Vitesse_y = -0.5};
 
 /* Retourne le rayon entre P et T, peu importe l'ordre*/
 float get_R(Planet P,Planet T){

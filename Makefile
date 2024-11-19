@@ -17,3 +17,4 @@ ModelePhysique.o : ModelePhysique.c
 
 clean:
 	rm -f $(TARGET)
+	rm -f $(OBJ)

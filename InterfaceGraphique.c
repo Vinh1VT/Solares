@@ -1,10 +1,24 @@
 #include "raylib.h"
 #include <stdlib.h>
 #include <math.h>
-#include "ModelePhysique.c"
+#include "ModelePhysique.h"
 #include <stdio.h>
 
 #define PERIODE 5
+
+Planet Soleil ={
+.Mass = 100,
+.Pos_x= 400,
+.Pos_y= 225,
+.Vitesse_x = 0,
+.Vitesse_y = 0};
+
+Planet Terre ={
+.Mass = 1,
+.Pos_x = 600,
+.Pos_y = 225,
+.Vitesse_x = 0,
+.Vitesse_y = -0.5};
 
 int main(void)
 {
