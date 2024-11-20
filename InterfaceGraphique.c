@@ -4,8 +4,7 @@
 #include "ModelePhysique.h"
 #include <stdio.h>
 
-#define PERIODE 5
-#define MULTIPLICATEUR 1
+#define MULTIPLICATEUR 5
 
 
 
@@ -30,7 +29,7 @@ int main(void)
 
     Planet Mars ={
     .Mass = 0.1,
-    .Pos_x = Soleil.Pos_x+400,
+    .Pos_x = Soleil.Pos_x+293.3,
     .Pos_y = Soleil.Pos_y, 
     .Vitesse_x = 0,
     .Vitesse_y = -40
@@ -69,12 +68,12 @@ int main(void)
         EndDrawing();
 
         actualTime = GetTime();
-        deltaTime = (actualTime - previousTime) * MULTIPLICATEUR;
+        deltaTime = (actualTime - previousTime)*MULTIPLICATEUR;
         previousTime = actualTime;
         //GetNextPosition(&Terre, Mars, deltaTime);
         //GetNextPosition(&Mars, Terre, deltaTime);
-        GetNextPosition(&Terre, Soleil, deltaTime);
-        GetNextPosition(&Mars, Soleil, deltaTime);
+        GetNextPosition(&Terre, &Soleil, deltaTime);
+        GetNextPosition(&Mars, &Soleil, deltaTime);
         
         //float V = sqrt((Terre.Vitesse_x*Terre.Vitesse_x)+(Terre.Vitesse_y*Terre.Vitesse_y)); 
         //printf("%f %f %f \n", Terre.Vitesse_x, Terre.Vitesse_y, V);
