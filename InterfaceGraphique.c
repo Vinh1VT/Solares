@@ -1,10 +1,10 @@
 #include "raylib.h"
 #include <stdlib.h>
 #include <math.h>
-#include "ModelePhysique.h"
+#include "ModelePhysique.c"
 #include <stdio.h>
 
-#define MULTIPLICATEUR 5
+#define MULTIPLICATEUR 1
 
 
 
@@ -14,25 +14,25 @@ int main(void)
     const int ScreenHeight = 1000;
 
     Planet Soleil ={
-    .Mass = 1E25,
+    .Mass = 2E21,
     .Pos_x= (float)ScreenWidth/2,
     .Pos_y= (float)ScreenHeight/2,
     .Vitesse_x = 0,
     .Vitesse_y = 0};
 
     Planet Terre ={
-    .Mass = 1,
+    .Mass = 3E20,
     .Pos_x = Soleil.Pos_x + 200,
     .Pos_y = Soleil.Pos_y,
     .Vitesse_x = 0,
     .Vitesse_y = -58};
 
     Planet Mars ={
-    .Mass = 0.1,
-    .Pos_x = Soleil.Pos_x+293.3,
+    .Mass = 1E20,
+    .Pos_x = Soleil.Pos_x+300,
     .Pos_y = Soleil.Pos_y, 
     .Vitesse_x = 0,
-    .Vitesse_y = -40
+    .Vitesse_y = 58
     };
 
 /*
@@ -70,8 +70,8 @@ int main(void)
         actualTime = GetTime();
         deltaTime = (actualTime - previousTime)*MULTIPLICATEUR;
         previousTime = actualTime;
-        //GetNextPosition(&Terre, Mars, deltaTime);
-        //GetNextPosition(&Mars, Terre, deltaTime);
+        GetNextPosition(&Terre, &Mars, deltaTime);
+        GetNextPosition(&Mars, &Terre, deltaTime);
         GetNextPosition(&Terre, &Soleil, deltaTime);
         GetNextPosition(&Mars, &Soleil, deltaTime);
         
