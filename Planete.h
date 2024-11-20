@@ -5,3 +5,8 @@ typedef struct Planet_{
     float Vitesse_x;
     float Vitesse_y;
 } Planet;
+
+typedef struct Point_ {
+    float x;
+    float y;
+} Point;

@@ -13,6 +13,11 @@ int main(void)
     const int ScreenWidth = 1000;
     const int ScreenHeight = 1000;
 
+    Point TraceTerre[1800];
+    Point TraceMars[1800];
+    Point TraceMercure[1800];
+
+
     Planet Soleil ={
     .Mass = 1E25,
     .Pos_x= (float)ScreenWidth/2,
@@ -63,12 +68,21 @@ int main(void)
     camera.target = (Vector2){0,0};
 
 
+    //Traceur
+    int i = 0;
+
+
     while (!WindowShouldClose())
     {
-/*
+/*      
         P.Pos_x = (float)ScreenWidth/2 + R * cosf(((2*PI)/PERIODE)*deltaTime);
         P.Pos_y = (float)ScreenHeight/2 + R * sinf(((2*PI)/PERIODE)*deltaTime); //On incrémente la position de oméga à chaque boucle (une boucle = 1 frame)
 */
+
+        if(i==1800) i=0;
+
+
+
         if(IsKeyDown(KEY_UP)) camera.target.y += 2;
         if(IsKeyDown(KEY_DOWN)) camera.target.y -= 2;
         if(IsKeyDown(KEY_RIGHT)) camera.target.x -= 2;
@@ -87,6 +101,13 @@ int main(void)
         DrawCircle(Mars.Pos_x, Mars.Pos_y, 10, RED);
         DrawCircle(Mercure.Pos_x, Mercure.Pos_y, 5 , WHITE);
 
+        for(int j = 0; j<1800;j++){
+            DrawPixel(TraceTerre[j].x, TraceTerre[j].y, BLUE);
+            DrawPixel(TraceMars[j].x, TraceMars[j].y, RED);
+            DrawPixel(TraceMercure[j].x, TraceMercure[j].y, WHITE);
+
+        };
+
         EndMode2D();
 
         EndDrawing();
@@ -96,6 +117,17 @@ int main(void)
         previousTime = actualTime;
         //GetNextPosition(&Terre, Mars, deltaTime);
         //GetNextPosition(&Mars, Terre, deltaTime);
+        
+        
+        TraceTerre[i].x = Terre.Pos_x;
+        TraceTerre[i].y = Terre.Pos_y;
+        TraceMars[i].x = Mars.Pos_x;
+        TraceMars[i].y = Mars.Pos_y;
+        TraceMercure[i].x = Mercure.Pos_x;
+        TraceMercure[i].y = Mercure.Pos_y;
+        i++;
+
+
         GetNextPosition(&Terre, &Soleil, deltaTime);
         GetNextPosition(&Mars, &Soleil, deltaTime);
         GetNextPosition(&Mercure, &Soleil, deltaTime);
