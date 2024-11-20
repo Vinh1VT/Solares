@@ -8,7 +8,7 @@ float G = 6.67E-20;
 
 /* Retourne le rayon entre P et T, peu importe l'ordre*/
 float get_R(Planet* P,Planet* T){
-    return log10(sqrt((P->Pos_x - T->Pos_x)*(P->Pos_x - T->Pos_x) + (P->Pos_y - T->Pos_y)*(P->Pos_y - T->Pos_y)));
+    return sqrt((P->Pos_x - T->Pos_x)*(P->Pos_x - T->Pos_x) + (P->Pos_y - T->Pos_y)*(P->Pos_y - T->Pos_y));
 }
 
 /*Retourne l'angle entre P et T, en prenant P comme l'origine*/

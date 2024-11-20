@@ -1,7 +1,7 @@
 #include "raylib.h"
 #include <stdlib.h>
 #include <math.h>
-#include "ModelePhysique.c"
+#include "ModelePhysique.h"
 #include <stdio.h>
 
 #define MULTIPLICATEUR 1
@@ -19,14 +19,14 @@ int main(void)
 
 
     Planet Soleil ={
-    .Mass = 2E21,
+    .Mass = 1E25,
     .Pos_x= (float)ScreenWidth/2,
     .Pos_y= (float)ScreenHeight/2,
     .Vitesse_x = 0,
     .Vitesse_y = 0};
 
     Planet Terre ={
-    .Mass = 3E20,
+    .Mass = 1,
     .Pos_x = Soleil.Pos_x + 200,
     .Pos_y = Soleil.Pos_y,
     .Vitesse_x = 0,
@@ -35,8 +35,6 @@ int main(void)
     Planet Mars ={
     .Mass = 0.1,
     .Pos_x = Soleil.Pos_x+304,
-    .Mass = 1E20,
-    .Pos_x = Soleil.Pos_x+300,
     .Pos_y = Soleil.Pos_y, 
     .Vitesse_x = 0,
     .Vitesse_y = -40
