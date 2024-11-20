@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #define PERIODE 5
+#define MULTIPLICATEUR 1
 
 
 
@@ -29,10 +30,10 @@ int main(void)
 
     Planet Mars ={
     .Mass = 0.1,
-    .Pos_x = Soleil.Pos_x-400,
+    .Pos_x = Soleil.Pos_x+400,
     .Pos_y = Soleil.Pos_y, 
     .Vitesse_x = 0,
-    .Vitesse_y = 40
+    .Vitesse_y = -40
     };
 
 /*
@@ -61,14 +62,14 @@ int main(void)
         BeginDrawing();
         ClearBackground(BLACK);
 
-        DrawCircle(Soleil.Pos_x, Soleil.Pos_y, 25, YELLOW);
+        DrawCircle(Soleil.Pos_x, Soleil.Pos_y, 20, YELLOW);
         DrawCircle(Terre.Pos_x, Terre.Pos_y, 10, BLUE);
         DrawCircle(Mars.Pos_x, Mars.Pos_y, 10, RED);
 
         EndDrawing();
 
         actualTime = GetTime();
-        deltaTime = (actualTime - previousTime);
+        deltaTime = (actualTime - previousTime) * MULTIPLICATEUR;
         previousTime = actualTime;
         //GetNextPosition(&Terre, Mars, deltaTime);
         //GetNextPosition(&Mars, Terre, deltaTime);
