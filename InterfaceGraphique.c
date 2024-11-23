@@ -37,7 +37,7 @@ int main(void)
     .Pos_x = Soleil.Pos_x+304,
     .Pos_y = Soleil.Pos_y, 
     .Vitesse_x = 0,
-    .Vitesse_y = -40
+    .Vitesse_y = -47
     };
 
     Planet Mercure= {
@@ -56,7 +56,7 @@ int main(void)
     double actualTime; //temps actuel
     double previousTime = GetTime(); //temps de début de la simulation
     double deltaTime = 0; //temps écoulé depuis le début de la simulation
-
+    float deltaTime2 = 0;
     SetTargetFPS(60);
 
     InitWindow(ScreenWidth, ScreenHeight, "Simulation");
@@ -101,12 +101,19 @@ int main(void)
         DrawCircle(Mars.Pos_x, Mars.Pos_y, 10, RED);
         DrawCircle(Mercure.Pos_x, Mercure.Pos_y, 5 , WHITE);
 
+        
+        //Trace et Trajectoire """voulue"""
         for(int j = 0; j<1800;j++){
             DrawPixel(TraceTerre[j].x, TraceTerre[j].y, BLUE);
             DrawPixel(TraceMars[j].x, TraceMars[j].y, RED);
             DrawPixel(TraceMercure[j].x, TraceMercure[j].y, WHITE);
 
         };
+        //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,200, SKYBLUE);
+        //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,304, ORANGE);
+        //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,78, YELLOW);
+
+
 
         EndMode2D();
 
@@ -114,6 +121,7 @@ int main(void)
 
         actualTime = GetTime();
         deltaTime = (actualTime - previousTime)*MULTIPLICATEUR;
+        deltaTime2 += actualTime - previousTime;
         previousTime = actualTime;
         //GetNextPosition(&Terre, Mars, deltaTime);
         //GetNextPosition(&Mars, Terre, deltaTime);
@@ -133,6 +141,8 @@ int main(void)
         GetNextPosition(&Mercure, &Soleil, deltaTime);
         //float V = sqrt((Terre.Vitesse_x*Terre.Vitesse_x)+(Terre.Vitesse_y*Terre.Vitesse_y)); 
         //printf("%f %f %f \n", Terre.Pos_x, Terre.Pos_y, V);
+        //printf("%d\n",i);
+        //Soleil.Pos_x += 0.1;
     }
 
     CloseWindow();
