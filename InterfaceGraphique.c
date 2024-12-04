@@ -53,11 +53,6 @@ int main(void)
     P.Pos_y = 0.0f;//toute cette partie est temporaire, faudra qu'on voit comment implémenter ça planete par planete
     float R = 100;
 */
-    double actualTime; //temps actuel
-    double previousTime = GetTime(); //temps de début de la simulation
-    double deltaTime = 0; //temps écoulé depuis le début de la simulation
-    float deltaTime2 = 0;
-    SetTargetFPS(60);
 
     InitWindow(ScreenWidth, ScreenHeight, "Simulation");
     SetWindowState(FLAG_WINDOW_RESIZABLE);
@@ -70,8 +65,13 @@ int main(void)
 
     //Traceur
     int i = 0;
-
-
+    /* variables temporelles à mettre juste avant la boucle principale*/
+    SetTargetFPS(60);
+    double actualTime; //temps actuel
+    double previousTime = GetTime(); //temps de début de la simulation
+    double deltaTime = 0; //temps écoulé depuis le début de la simulation
+    float deltaTime2 = 0;
+    
     while (!WindowShouldClose())
     {
 /*      
