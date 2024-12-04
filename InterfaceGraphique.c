@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
 #include "ModelePhysique.h"
@@ -82,11 +83,18 @@ int main(void)
         if(i==1800) i=0;
 
 
-
-        if(IsKeyDown(KEY_UP)) camera.target.y += 2;
-        if(IsKeyDown(KEY_DOWN)) camera.target.y -= 2;
-        if(IsKeyDown(KEY_RIGHT)) camera.target.x -= 2;
-        if(IsKeyDown(KEY_LEFT)) camera.target.x += 2;
+        //controle de la caméra 
+        if(true){
+        if(IsKeyDown(KEY_UP)) camera.target.y -= 2;
+        if(IsKeyDown(KEY_DOWN)) camera.target.y += 2;
+        if(IsKeyDown(KEY_RIGHT)) camera.target.x += 2;
+        if(IsKeyDown(KEY_LEFT)) camera.target.x -= 2;
+        if(IsKeyDown(KEY_ENTER)) camera.target = (Vector2){0,0};
+        if(IsKeyDown(KEY_RIGHT_SHIFT)) camera.zoom = 1;
+        if(IsKeyPressed(KEY_KP_ADD)) camera.zoom += 0.1f;
+        if(IsKeyPressed(KEY_KP_SUBTRACT)) camera.zoom -= 0.1f;
+        if(camera.zoom<0) camera.zoom=0;
+        }
 
 
         BeginDrawing();
