@@ -68,3 +68,20 @@ int len(ListPlanet *L){
     }
     return length;
 }
+
+void GetNextPosition_lune(Planet* P, Planet* S,Planet* Sol, float deltatime){
+    float R = get_R(P,S);
+    float theta = get_theta(P,S);
+    
+    P->Vitesse_x += (G * S->Mass * cosf(theta) * deltatime) / (10+R*R);
+    P->Vitesse_y += (G * S->Mass * sinf(theta) * deltatime) / (10+R*R);
+    
+    R = get_R(S,Sol);
+    theta = get_theta(S,Sol);
+
+    P->Vitesse_x += (G * Sol->Mass * cosf(theta) * deltatime) / (R*R);
+    P->Vitesse_y += (G * Sol->Mass * sinf(theta) * deltatime) / (R*R);
+
+    P->Pos_x += P->Vitesse_x * deltatime;
+    P->Pos_y += P->Vitesse_y * deltatime;
+}
