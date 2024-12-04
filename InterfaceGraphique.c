@@ -48,12 +48,7 @@ int main(void)
         .Vitesse_y = -95
     };
 
-/*
-    Planet P;
-    P.Pos_x = 0.0f;
-    P.Pos_y = 0.0f;//toute cette partie est temporaire, faudra qu'on voit comment implémenter ça planete par planete
-    float R = 100;
-*/
+
 
     InitWindow(ScreenWidth, ScreenHeight, "Simulation");
     SetWindowState(FLAG_WINDOW_RESIZABLE);
@@ -121,13 +116,14 @@ int main(void)
         DrawCircle(Mercure.Pos_x, Mercure.Pos_y, 5 , WHITE);
 
         
-        //Trace et Trajectoire """voulue"""
+        //Trace
         for(int j = 0; j<1800;j++){
             DrawPixel(TraceTerre[j].x, TraceTerre[j].y, BLUE);
             DrawPixel(TraceMars[j].x, TraceMars[j].y, RED);
             DrawPixel(TraceMercure[j].x, TraceMercure[j].y, WHITE);
 
         };
+        //Trajectoire idéale
         //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,200, SKYBLUE);
         //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,304, ORANGE);
         //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,78, YELLOW);
@@ -158,9 +154,7 @@ int main(void)
         GetNextPosition(&Terre, &Soleil, deltaTime);
         GetNextPosition(&Mars, &Soleil, deltaTime);
         GetNextPosition(&Mercure, &Soleil, deltaTime);
-        //float V = sqrt((Terre.Vitesse_x*Terre.Vitesse_x)+(Terre.Vitesse_y*Terre.Vitesse_y)); 
-        //printf("%f %f %f \n", Terre.Pos_x, Terre.Pos_y, V);
-        //printf("%d\n",i);
+
         //Soleil.Pos_x += 0.1;
     }
 

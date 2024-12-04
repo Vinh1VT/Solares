@@ -43,6 +43,7 @@ void GetNextPosition(Planet* P, Planet* S,float deltatime){
     return;
 }
 
+//Ajoute une planete a la liste des planetes
 void append(ListPlanet *L, Planet P, Color C, float T){
     ListPlanet* i = L;
     while(i->suivant!=NULL){
@@ -56,6 +57,7 @@ void append(ListPlanet *L, Planet P, Color C, float T){
     i->suivant = NULL;
 }
 
+//Calcule la longueur de la liste des planetes
 int len(ListPlanet *L){
     ListPlanet* i = L;
     int length = 0; 
