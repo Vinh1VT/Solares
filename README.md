@@ -2,8 +2,8 @@
 (peut être à cause du deltaTime?). Certaines des variables ne sont pas liées entre les fichiers (position du Soleil par ex.)
 
 20/11/2024: TODO
-- Une manière de rajouter des planètes facilement (Structures Liste de Planetes)
+- Une manière de rajouter des planètes facilement (Structures Liste de Planetes) FAIT ('fin essayé)
 - Faire marcher un modele physique mieux au niveau des distances (Log ? Passer en UA ? Juste faire des calculs mieux ?)
-- Zoom - Dezoom de la caméra
-- Mode centré de la caméra ? 
+- Zoom - Dezoom de la caméra FAIT
+- Mode centré de la caméra FAIT
 - Bosser sur le concept de Lune (Apres le modele physique) -> Detection de proximité 

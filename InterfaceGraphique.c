@@ -61,7 +61,8 @@ int main(void)
     //Caméra
     Camera2D camera = {0};
     camera.zoom = 1.0f;
-    camera.target = (Vector2){0,0};
+    camera.target = (Vector2){(float)ScreenWidth/2,(float)ScreenHeight/2};
+    camera.offset = (Vector2){(float)ScreenWidth/2,(float)ScreenHeight/2};
 
 
     //Traceur
@@ -89,11 +90,21 @@ int main(void)
         if(IsKeyDown(KEY_DOWN)) camera.target.y += 2;
         if(IsKeyDown(KEY_RIGHT)) camera.target.x += 2;
         if(IsKeyDown(KEY_LEFT)) camera.target.x -= 2;
-        if(IsKeyDown(KEY_ENTER)) camera.target = (Vector2){0,0};
+        if(IsKeyDown(KEY_ENTER)) camera.target = (Vector2){(float)ScreenWidth/2,(float)ScreenHeight/2};
         if(IsKeyDown(KEY_RIGHT_SHIFT)) camera.zoom = 1;
         if(IsKeyPressed(KEY_KP_ADD)) camera.zoom += 0.1f;
         if(IsKeyPressed(KEY_KP_SUBTRACT)) camera.zoom -= 0.1f;
-        if(camera.zoom<0) camera.zoom=0;
+        if(camera.zoom<0.1f) camera.zoom=0.1f;
+        
+        if(IsKeyDown(KEY_ONE)){
+            camera.target = (Vector2){Mercure.Pos_x ,Mercure.Pos_y };
+        }
+        if(IsKeyDown(KEY_THREE)){
+            camera.target = (Vector2){Terre.Pos_x ,Terre.Pos_y };
+        }
+        if(IsKeyDown(KEY_FOUR)){
+            camera.target = (Vector2){Mars.Pos_x ,Mars.Pos_y };
+        }
         }
 
 
