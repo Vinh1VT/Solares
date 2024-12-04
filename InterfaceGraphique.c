@@ -11,8 +11,8 @@
 
 int main(void)
 {
-    const int ScreenWidth = 1000;
-    const int ScreenHeight = 1000;
+    int ScreenWidth = 1000;
+    int ScreenHeight = 1000;
 
     Point TraceTerre[TAILLETRACE];
     Point TraceMars[TAILLETRACE];
@@ -59,7 +59,6 @@ int main(void)
     Camera2D camera = {0};
     camera.zoom = 1.0f;
     camera.target = (Vector2){(float)ScreenWidth/2,(float)ScreenHeight/2};
-    camera.offset = (Vector2){(float)ScreenWidth/2,(float)ScreenHeight/2};
 
 
     //Traceur
@@ -68,7 +67,7 @@ int main(void)
     SetTargetFPS(60);
     double actualTime; //temps actuel
     double previousTime = GetTime(); //temps de début de la simulation
-    double deltaTime = 0; //temps écoulé depuis le début de la simulation
+    double deltaTime = 0; //temps écoulé depu²is le début de la simulation
     float deltaTime2 = 0;
     
     while (!WindowShouldClose())
@@ -80,6 +79,10 @@ int main(void)
 
         if(i==TAILLETRACE) i=0;
 
+        ScreenHeight = GetScreenHeight();
+        ScreenWidth = GetScreenWidth();
+
+        camera.offset = (Vector2){(float)ScreenWidth/2,(float)ScreenHeight/2};
 
         //controle de la caméra 
         if(true){
