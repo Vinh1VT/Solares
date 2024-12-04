@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 #define MULTIPLICATEUR 1
-
+#define TAILLETRACE 1800
 
 
 int main(void)
@@ -14,9 +14,9 @@ int main(void)
     const int ScreenWidth = 1000;
     const int ScreenHeight = 1000;
 
-    Point TraceTerre[1800];
-    Point TraceMars[1800];
-    Point TraceMercure[1800];
+    Point TraceTerre[TAILLETRACE];
+    Point TraceMars[TAILLETRACE];
+    Point TraceMercure[TAILLETRACE];
 
 
     Planet Soleil ={
@@ -24,14 +24,16 @@ int main(void)
     .Pos_x= (float)ScreenWidth/2,
     .Pos_y= (float)ScreenHeight/2,
     .Vitesse_x = 0,
-    .Vitesse_y = 0};
+    .Vitesse_y = 0
+    };
 
     Planet Terre ={
     .Mass = 1,
     .Pos_x = Soleil.Pos_x + 200,
     .Pos_y = Soleil.Pos_y,
     .Vitesse_x = 0,
-    .Vitesse_y = -58};
+    .Vitesse_y = -58
+    };
 
     Planet Mars ={
     .Mass = 0.1,
@@ -76,7 +78,7 @@ int main(void)
         P.Pos_y = (float)ScreenHeight/2 + R * sinf(((2*PI)/PERIODE)*deltaTime); //On incrémente la position de oméga à chaque boucle (une boucle = 1 frame)
 */
 
-        if(i==1800) i=0;
+        if(i==TAILLETRACE) i=0;
 
 
         //controle de la caméra 
@@ -110,14 +112,14 @@ int main(void)
         BeginMode2D(camera);
 
 
-        DrawCircle(Soleil.Pos_x, Soleil.Pos_y, 20, YELLOW);
+        DrawCircleGradient(Soleil.Pos_x, Soleil.Pos_y, 20, YELLOW, ORANGE);
         DrawCircle(Terre.Pos_x, Terre.Pos_y, 10, BLUE);
         DrawCircle(Mars.Pos_x, Mars.Pos_y, 10, RED);
         DrawCircle(Mercure.Pos_x, Mercure.Pos_y, 5 , WHITE);
 
         
         //Trace
-        for(int j = 0; j<1800;j++){
+        for(int j = 0; j<TAILLETRACE;j++){
             DrawPixel(TraceTerre[j].x, TraceTerre[j].y, BLUE);
             DrawPixel(TraceMars[j].x, TraceMars[j].y, RED);
             DrawPixel(TraceMercure[j].x, TraceMercure[j].y, WHITE);
