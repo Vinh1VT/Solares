@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdlib.h>
 #include "Planete.h"
 #include "raylib.h"
 
@@ -40,4 +41,28 @@ void GetNextPosition(Planet* P, Planet* S,float deltatime){
     P->Pos_x += P->Vitesse_x * deltatime;
     P->Pos_y += P->Vitesse_y * deltatime;
     return;
+}
+
+void append(ListPlanet *L, Planet P, Color C, float T){
+    ListPlanet* i = L;
+    while(i->suivant!=NULL){
+        i = i-> suivant;
+    }
+    i->suivant = malloc(sizeof(ListPlanet));
+    i = i->suivant;
+    i->Taille = T;
+    i->couleur = C;
+    i->start = L;
+    i->suivant = NULL;
+}
+
+int len(ListPlanet *L){
+    ListPlanet* i = L;
+    int length = 0; 
+
+    while(i!=NULL){
+        length+=1;
+        i = i->suivant;
+    }
+    return length;
 }
