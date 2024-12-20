@@ -6,4 +6,13 @@
 - Faire marcher un modele physique mieux au niveau des distances (Log ? Passer en UA ? Juste faire des calculs mieux ?)
 - Zoom - Dezoom de la caméra FAIT
 - Mode centré de la caméra FAIT
-- Bosser sur le concept de Lune (Apres le modele physique) -> Detection de proximité 
+- Bosser sur le concept de Lune (Apres le modele physique) -> Detection de proximité
+
+20/12/2024
+- Liste chainée OK pour calcul vitesse,position; affichage de tout OK mais soleil séparé.
+- liste chainée OK est sur une branche séparée → à merge (je galère)
+- Soleil pas inclus dans la liste chainée → il est dessiné séparément.
+- Les Traces sont cassées (à adapter à la liste chainée)
+- intégrer le fichier CSV
+- faire du nettoyage (on a toujours les commentaires de la V1 avec le cos(omega*t) mdr)
+- refaire du test lune; anti catapultage ?
