@@ -1,6 +1,7 @@
 #include "raylib.h"
 
-
+#ifndef PLANETE
+#define PLANETE
 typedef struct Planet_{
     float Mass;
     float Pos_x;
@@ -24,3 +25,4 @@ typedef struct _ListPlanet{
     float Taille;
 
 } ListPlanet;
+#endif
