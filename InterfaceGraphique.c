@@ -4,6 +4,7 @@
 #include <math.h>
 #include "ModelePhysique.h"
 #include <stdio.h>
+#include "csv.h"
 
 #define MULTIPLICATEUR 1
 #define TAILLETRACE 1800
@@ -17,6 +18,7 @@ int main(void)
     Point TraceTerre[TAILLETRACE];
     Point TraceMars[TAILLETRACE];
     Point TraceMercure[TAILLETRACE];
+    Point TraceVenus[TAILLETRACE];
 
 
     Planet Soleil ={
@@ -50,6 +52,12 @@ int main(void)
         .Vitesse_y = -95
     };
 
+    Planet Venus={
+        .Pos_x = Soleil.Pos_x + 143,
+        .Pos_y = Soleil.Pos_y,
+        .Vitesse_x = 0,
+        .Vitesse_y = -70
+    };
 
 
     InitWindow(ScreenWidth, ScreenHeight, "Simulation");
@@ -119,6 +127,7 @@ int main(void)
         DrawCircle(Terre.Pos_x, Terre.Pos_y, 10, BLUE);
         DrawCircle(Mars.Pos_x, Mars.Pos_y, 10, RED);
         DrawCircle(Mercure.Pos_x, Mercure.Pos_y, 5 , WHITE);
+        DrawCircle(Venus.Pos_x, Venus.Pos_y, 5, ORANGE);
 
         
         //Trace
@@ -126,7 +135,7 @@ int main(void)
             DrawPixel(TraceTerre[j].x, TraceTerre[j].y, BLUE);
             DrawPixel(TraceMars[j].x, TraceMars[j].y, RED);
             DrawPixel(TraceMercure[j].x, TraceMercure[j].y, WHITE);
-
+            DrawPixel(TraceVenus[j].x, TraceVenus[j].y, ORANGE);
         };
         //Trajectoire idéale
         //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,200, SKYBLUE);
@@ -153,15 +162,19 @@ int main(void)
         TraceMars[i].y = Mars.Pos_y;
         TraceMercure[i].x = Mercure.Pos_x;
         TraceMercure[i].y = Mercure.Pos_y;
+        TraceVenus[i].x = Venus.Pos_x;
+        TraceVenus[i].y = Venus.Pos_y;
         i++;
 
         GetNextVitesse(&Terre, &Soleil, deltaTime);
         GetNextVitesse(&Mars, &Soleil, deltaTime);
         GetNextVitesse(&Mercure, &Soleil, deltaTime);
+        GetNextVitesse(&Venus, &Soleil, deltaTime);
 
         GetNextPosition(&Terre, &Soleil, deltaTime);
         GetNextPosition(&Mars, &Soleil, deltaTime);
         GetNextPosition(&Mercure, &Soleil, deltaTime);
+        GetNextPosition(&Venus, &Soleil, deltaTime);
 
         //Soleil.Pos_x += 0.1;
     }

@@ -57,7 +57,6 @@ void append(ListPlanet *L, Planet P, Color C, float T){
     i->suivant = malloc(sizeof(ListPlanet));
     i = i->suivant;
     i->Taille = T;
-    i->couleur = C;
     i->start = L;
     i->suivant = NULL;
 }

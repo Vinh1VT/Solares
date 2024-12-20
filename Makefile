@@ -5,7 +5,7 @@ TARGET = Simulation
 OBJ = InterfaceGraphique.o ModelePhysique.o
 
 $(TARGET) : $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET) -lm -lraylib
+	$(CC) $(OBJ) -o $(TARGET) -lm -lraylib -lcsv
 	rm -f $(OBJ)
 
 InterfaceGraphique.o : InterfaceGraphique.c
