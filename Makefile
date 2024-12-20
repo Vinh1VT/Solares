@@ -18,3 +18,8 @@ ModelePhysique.o : ModelePhysique.c
 clean:
 	rm -f $(TARGET)
 	rm -f $(OBJ)
+
+l: $(TARGET)
+	make clean
+	make
+	./Simulation
