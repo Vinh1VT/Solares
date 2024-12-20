@@ -30,14 +30,19 @@ float get_theta(Planet* P, Planet* T){
     return theta;
 }
 
-/* Calcule la prochaine position de P, en prenant en compte la gravité de S*/
-void GetNextPosition(Planet* P, Planet* S,float deltatime){
+/* Calcule la prochaine vitesse de P, en prenant en compte la gravité de S. à appliquer pour chaque planète qui exerce de la gravité*/
+void GetNextVitesse(Planet* P, Planet* S,float deltatime){
     float R = get_R(P,S);
     float theta = get_theta(P,S);
 
     P->Vitesse_x += (G * S->Mass * cosf(theta) * deltatime) / (R*R);
     P->Vitesse_y += (G * S->Mass * sinf(theta) * deltatime) / (R*R);
 
+    return;
+}
+
+/* Calcule la prochaine position de P, en prenant en compte la gravité de S*/
+void GetNextPosition(Planet* P, Planet* S,float deltatime){
     P->Pos_x += P->Vitesse_x * deltatime;
     P->Pos_y += P->Vitesse_y * deltatime;
     return;

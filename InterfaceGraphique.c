@@ -155,6 +155,9 @@ int main(void)
         TraceMercure[i].y = Mercure.Pos_y;
         i++;
 
+        GetNextVitesse(&Terre, &Soleil, deltaTime);
+        GetNextVitesse(&Mars, &Soleil, deltaTime);
+        GetNextVitesse(&Mercure, &Soleil, deltaTime);
 
         GetNextPosition(&Terre, &Soleil, deltaTime);
         GetNextPosition(&Mars, &Soleil, deltaTime);
