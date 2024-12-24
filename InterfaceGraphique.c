@@ -4,7 +4,6 @@
 #include <math.h>
 #include "ModelePhysique.h"
 #include <stdio.h>
-#include "csv.h"
 
 #define MULTIPLICATEUR 1
 #define TAILLETRACE 1800
