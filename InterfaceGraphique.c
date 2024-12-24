@@ -13,10 +13,6 @@ int main(void)
     int ScreenWidth = 1000;
     int ScreenHeight = 1000;
 
-    Point TraceTerre[TAILLETRACE];
-    Point TraceMars[TAILLETRACE];
-    Point TraceMercure[TAILLETRACE];
-    Point TraceVenus[TAILLETRACE];
 
 
     Planet Soleil ={
@@ -81,6 +77,7 @@ int main(void)
 
     //Traceur
     int i = 0;
+    Point Trace[len(&liste)][TAILLETRACE];
     /* variables temporelles à mettre juste avant la boucle principale*/
     SetTargetFPS(60);
     double actualTime; //temps actuel
@@ -130,19 +127,11 @@ int main(void)
 
         DrawCircleGradient(Soleil.Pos_x, Soleil.Pos_y, 20, YELLOW, ORANGE);
         DrawAll(&liste);
-        /*DrawCircle(Terre.Pos_x, Terre.Pos_y, 10, BLUE);
-        DrawCircle(Mars.Pos_x, Mars.Pos_y, 10, RED);
-        DrawCircle(Mercure.Pos_x, Mercure.Pos_y, 5 , WHITE);
-        DrawCircle(Venus.Pos_x, Venus.Pos_y, 5, ORANGE);*/
+
 
         
         //Trace
-        for(int j = 0; j<TAILLETRACE;j++){
-            DrawPixel(TraceTerre[j].x, TraceTerre[j].y, BLUE);
-            DrawPixel(TraceMars[j].x, TraceMars[j].y, RED);
-            DrawPixel(TraceMercure[j].x, TraceMercure[j].y, WHITE);
-            DrawPixel(TraceVenus[j].x, TraceVenus[j].y, ORANGE);
-        };
+        DrawTrace(Trace,len(&liste));
         //Trajectoire idéale
         //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,200, SKYBLUE);
         //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,304, ORANGE);
@@ -158,29 +147,13 @@ int main(void)
         deltaTime = (actualTime - previousTime)*MULTIPLICATEUR;
         deltaTime2 += actualTime - previousTime;
         previousTime = actualTime;
-        //GetNextPosition(&Terre, Mars, deltaTime);
-        //GetNextPosition(&Mars, Terre, deltaTime);
+
         
-        
-        TraceTerre[i].x = Terre.Pos_x;
-        TraceTerre[i].y = Terre.Pos_y;
-        TraceMars[i].x = Mars.Pos_x;
-        TraceMars[i].y = Mars.Pos_y;
-        TraceMercure[i].x = Mercure.Pos_x;
-        TraceMercure[i].y = Mercure.Pos_y;
-        TraceVenus[i].x = Venus.Pos_x;
-        TraceVenus[i].y = Venus.Pos_y;
+
+        UpdateTrace(Trace, i, len(&liste), &liste);
         i++;
         GetNextVitesseAll(&liste,&Soleil,deltaTime);
-        /* GetNextVitesse(&Terre, &Soleil, deltaTime);
-        GetNextVitesse(&Mars, &Soleil, deltaTime);
-        GetNextVitesse(&Mercure, &Soleil, deltaTime);
-        GetNextVitesse(&Venus, &Soleil, deltaTime);
 
-        GetNextPosition(&Terre, &Soleil, deltaTime);
-        GetNextPosition(&Mars, &Soleil, deltaTime);
-        GetNextPosition(&Mercure, &Soleil, deltaTime);
-        GetNextPosition(&Venus, &Soleil, deltaTime); */
         GetNextPositionAll(&liste, deltaTime);
         //Soleil.Pos_x += 0.1;
     }

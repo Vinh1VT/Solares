@@ -124,3 +124,21 @@ void GetNextPosition_lune(Planet* P, Planet* S,Planet* Sol, float deltatime){
     P->Pos_x += P->Vitesse_x * deltatime;
     P->Pos_y += P->Vitesse_y * deltatime;
 }
+
+//Affiche toute les traces
+void DrawTrace(Point tab[][1800], int l){
+    for(int i=0;i<l;i++){
+        for(int j = 0;j<1800;j++){
+            DrawPixel(tab[i][j].x, tab[i][j].y,  RAYWHITE);
+        }
+    }
+}
+
+//Ajoute les points dans les traces
+void UpdateTrace(Point tab[][1800],int i,int l, ListPlanet* liste){
+    for(int j=0; j<l;j++){
+        tab[j][i].x = liste->P.Pos_x;
+        tab[j][i].y = liste->P.Pos_y;
+        liste = liste->suivant;
+    }
+}

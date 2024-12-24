@@ -11,4 +11,6 @@ void GetNextPosition_lune(Planet* P, Planet* S,Planet* Sol, float deltatime);
 void GetNextVitesseAll(ListPlanet* liste,Planet* S, float deltatime);
 void GetNextPositionAll(ListPlanet* liste, float deltatime);
 void DrawAll(ListPlanet* liste);
+void DrawTrace(Point tab[][1800], int l);
+void UpdateTrace(Point tab[][1800],int i,int l, ListPlanet* liste);
 #endif
