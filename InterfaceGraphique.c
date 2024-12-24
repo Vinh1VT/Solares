@@ -1,7 +1,6 @@
 #include "raylib.h"
 #include <stdbool.h>
 #include <stdlib.h>
-#include <math.h>
 #include "ModelePhysique.h"
 #include <stdio.h>
 
@@ -86,7 +85,7 @@ int main(void)
     SetTargetFPS(60);
     double actualTime; //temps actuel
     double previousTime = GetTime(); //temps de début de la simulation
-    double deltaTime = 0; //temps écoulé depu²is le début de la simulation
+    double deltaTime = 0; //temps écoulé depuis le début de la simulation
     float deltaTime2 = 0;
     
     while (!WindowShouldClose())
