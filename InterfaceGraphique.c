@@ -52,12 +52,6 @@ int main(void)
         .Vitesse_y = -95
     };
 
-    Planet Venus={
-        .Pos_x = Soleil.Pos_x + 143,
-        .Pos_y = Soleil.Pos_y,
-        .Vitesse_x = 0,
-        .Vitesse_y = -70
-    };
     ListPlanet liste ={
         .start = &liste,
         .P = Terre,
@@ -137,8 +131,7 @@ int main(void)
         DrawCircle(Terre.Pos_x, Terre.Pos_y, 10, BLUE);
         DrawCircle(Mars.Pos_x, Mars.Pos_y, 10, RED);
         DrawCircle(Mercure.Pos_x, Mercure.Pos_y, 5 , WHITE);
-        DrawCircle(Venus.Pos_x, Venus.Pos_y, 5, ORANGE);*/
-
+        */
         
         //Trace
         for(int j = 0; j<TAILLETRACE;j++){
@@ -179,14 +172,14 @@ int main(void)
         GetNextVitesseAll(&liste,&Soleil,deltaTime);
         /*GetNextVitesse(&Terre, &Soleil, deltaTime);
         GetNextVitesse(&Mars, &Soleil, deltaTime);
-        GetNextVitesse(&Mercure, &Soleil, deltaTime);
-        GetNextVitesse(&Venus, &Soleil, deltaTime);*/
-
+        GetNextVitesse(&Mercure, &Soleil, deltaTime);*/
+        
         GetNextPositionAll(&liste,deltaTime);
-        /*GetNextPosition(&Terre, &Soleil, deltaTime);
-        GetNextPosition(&Mars, &Soleil, deltaTime);
-        GetNextPosition(&Mercure, &Soleil, deltaTime);
-        GetNextPosition(&Venus, &Soleil, deltaTime);*/
+       /* GetNextPosition(&Terre, deltaTime);
+        GetNextPosition(&Mars, deltaTime);
+        GetNextPosition(&Mercure, deltaTime);*/
+
+        DrawAll(&liste);
 
         DrawAll(&liste);
         //Soleil.Pos_x += 0.1;
