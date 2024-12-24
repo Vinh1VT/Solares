@@ -17,6 +17,9 @@
 - faire du nettoyage (on a toujours les commentaires de la V1 avec le cos(omega*t) mdr)
 - refaire du test lune; anti catapultage ?
 
-24/12/2024 : L'odysée du merge
+24/12/2024 : L'odyssée du merge
 Je galere a merge nos branches depuis tout a l'heure, je comprends pas ce qui marche pas :'(
 Je vais tenter de tout reprendre fichier par fichier et faire un gros push sur main mais bon on va bien voir si ça marche
+
+En fait non ça marche pas non plus
+Je vais recopier toutes les fonctions une par une du coup :)

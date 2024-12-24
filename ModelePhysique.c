@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Planete.h"
 #include "raylib.h"
+#include <stdio.h>
 
 /* Quelques constantes*/
 float G = 6.67E-20;
@@ -41,22 +42,24 @@ void GetNextVitesse(Planet* P, Planet* S,float deltatime){
     return;
 }
 
-/* Calcule la prochaine position de P, en prenant en compte la gravité de S*/
-void GetNextPosition(Planet* P, Planet* S,float deltatime){
+/* Calcule la prochaine position de P*/
+void GetNextPosition(Planet* P,float deltatime){
     P->Pos_x += P->Vitesse_x * deltatime;
     P->Pos_y += P->Vitesse_y * deltatime;
     return;
 }
 
 //Ajoute une planete a la liste des planetes
-void append(ListPlanet *L, Planet P, Color C, float T){
+void append(ListPlanet *L, Planet Plan, Color C, float T){
     ListPlanet* i = L;
     while(i->suivant!=NULL){
         i = i-> suivant;
     }
     i->suivant = malloc(sizeof(ListPlanet));
     i = i->suivant;
+    i->P = Plan;
     i->Taille = T;
+    i->couleur = C;
     i->start = L;
     i->suivant = NULL;
 }
@@ -71,6 +74,38 @@ int len(ListPlanet *L){
         i = i->suivant;
     }
     return length;
+}
+/* Parcourt la liste chainée pour update la vitesse de toutes les planètes, par rapport à la gravité de S*/
+void GetNextVitesseAll(ListPlanet* liste,Planet* S, float deltatime){
+    ListPlanet* lis = liste;
+    while(lis->suivant != NULL){
+        GetNextVitesse(&(lis->P),S,deltatime);
+        lis = lis->suivant;
+        printf("%f %f \n", lis->P.Vitesse_x, lis->P.Pos_x);
+    }
+    GetNextVitesse(&(lis->P),S,deltatime);
+    return;
+}
+
+/* Parcourt la liste chainée pour update la position de toutes les planètes*/
+void GetNextPositionAll(ListPlanet* liste, float deltatime){
+    ListPlanet* lis = liste;
+    while(lis->suivant != NULL){
+        GetNextPosition(&(lis->P),deltatime);
+        lis = lis->suivant;
+    }
+    GetNextPosition(&(lis->P),deltatime);
+    return;
+}
+/* Parcourt la liste chainée pour dessiner toutes les planètes*/
+void DrawAll(ListPlanet* liste){
+    ListPlanet* lis = liste;
+    while(lis->suivant != NULL){
+        DrawCircle(lis->P.Pos_x,lis->P.Pos_y,lis->Taille,lis->couleur);
+        lis = lis->suivant;
+    }
+    DrawCircle(lis->P.Pos_x,lis->P.Pos_y,lis->Taille,lis->couleur);
+    return;
 }
 
 void GetNextPosition_lune(Planet* P, Planet* S,Planet* Sol, float deltatime){
