@@ -58,15 +58,7 @@ int main(void)
         .Vitesse_x = 0,
         .Vitesse_y = -70
     };
-    ListPlanet liste ={
-        .start = &liste,
-        .P = Terre,
-        .suivant = NULL,
-        .couleur = BLUE,
-        .Taille = 10
-    };
-    append(&liste,Mars,RED,10);
-    append(&liste,Mercure,WHITE,5);
+
 
     InitWindow(ScreenWidth, ScreenHeight, "Simulation");
     SetWindowState(FLAG_WINDOW_RESIZABLE);
@@ -132,12 +124,10 @@ int main(void)
 
 
         DrawCircleGradient(Soleil.Pos_x, Soleil.Pos_y, 20, YELLOW, ORANGE);
-        
-        /*Plus nécessaire: DrawAll, juste le soleil à afficher car il n'est pas dans la liste chainée.
         DrawCircle(Terre.Pos_x, Terre.Pos_y, 10, BLUE);
         DrawCircle(Mars.Pos_x, Mars.Pos_y, 10, RED);
         DrawCircle(Mercure.Pos_x, Mercure.Pos_y, 5 , WHITE);
-        DrawCircle(Venus.Pos_x, Venus.Pos_y, 5, ORANGE);*/
+        DrawCircle(Venus.Pos_x, Venus.Pos_y, 5, ORANGE);
 
         
         //Trace
@@ -176,19 +166,16 @@ int main(void)
         TraceVenus[i].y = Venus.Pos_y;
         i++;
 
-        GetNextVitesseAll(&liste,&Soleil,deltaTime);
-        /*GetNextVitesse(&Terre, &Soleil, deltaTime);
+        GetNextVitesse(&Terre, &Soleil, deltaTime);
         GetNextVitesse(&Mars, &Soleil, deltaTime);
         GetNextVitesse(&Mercure, &Soleil, deltaTime);
-        GetNextVitesse(&Venus, &Soleil, deltaTime);*/
+        GetNextVitesse(&Venus, &Soleil, deltaTime);
 
-        GetNextPositionAll(&liste,deltaTime);
-        /*GetNextPosition(&Terre, &Soleil, deltaTime);
+        GetNextPosition(&Terre, &Soleil, deltaTime);
         GetNextPosition(&Mars, &Soleil, deltaTime);
         GetNextPosition(&Mercure, &Soleil, deltaTime);
-        GetNextPosition(&Venus, &Soleil, deltaTime);*/
+        GetNextPosition(&Venus, &Soleil, deltaTime);
 
-        DrawAll(&liste);
         //Soleil.Pos_x += 0.1;
     }
 
