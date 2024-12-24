@@ -79,11 +79,6 @@ int main(void)
     
     while (!WindowShouldClose())
     {
-/*      
-        P.Pos_x = (float)ScreenWidth/2 + R * cosf(((2*PI)/PERIODE)*deltaTime);
-        P.Pos_y = (float)ScreenHeight/2 + R * sinf(((2*PI)/PERIODE)*deltaTime); //On incrémente la position de oméga à chaque boucle (une boucle = 1 frame)
-*/
-
         if(i==TAILLETRACE) i=0;
 
         ScreenHeight = GetScreenHeight();
