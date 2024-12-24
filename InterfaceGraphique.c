@@ -100,7 +100,7 @@ int main(void)
         if(IsKeyDown(KEY_DOWN)) camera.target.y += 2;
         if(IsKeyDown(KEY_RIGHT)) camera.target.x += 2;
         if(IsKeyDown(KEY_LEFT)) camera.target.x -= 2;
-        if(IsKeyDown(KEY_ENTER)) camera.target = (Vector2){(float)ScreenWidth/2,(float)ScreenHeight/2};
+        if(IsKeyDown(KEY_ENTER)) camera.target = (Vector2){Soleil.Pos_x,Soleil.Pos_y};
         if(IsKeyDown(KEY_RIGHT_SHIFT)) camera.zoom = 1;
         if(IsKeyPressed(KEY_KP_ADD)) camera.zoom += 0.1f;
         if(IsKeyPressed(KEY_KP_SUBTRACT)) camera.zoom -= 0.1f;
