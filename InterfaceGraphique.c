@@ -82,6 +82,7 @@ int main(void)
 
     //Traceur
     int i = 0;
+    bool afficheTrace = true;
     /* variables temporelles à mettre juste avant la boucle principale*/
     SetTargetFPS(60);
     double actualTime; //temps actuel
@@ -109,6 +110,7 @@ int main(void)
         if(IsKeyPressed(KEY_KP_ADD)) camera.zoom += 0.1f;
         if(IsKeyPressed(KEY_KP_SUBTRACT)) camera.zoom -= 0.1f;
         if(camera.zoom<0.1f) camera.zoom=0.1f;
+        if(IsKeyPressed(KEY_T)) afficheTrace = !afficheTrace;
         
         if(IsKeyDown(KEY_ONE)){
             camera.target = (Vector2){Mercure.Pos_x ,Mercure.Pos_y };
@@ -138,7 +140,7 @@ int main(void)
 
         
         //Trace
-        DrawTrace(liste);
+        if(afficheTrace) DrawTrace(liste);
         //Trajectoire idéale
         //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,200, SKYBLUE);
         //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,304, ORANGE);
