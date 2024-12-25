@@ -1,7 +1,10 @@
 #include "raylib.h"
 
+#define TAILLETRACE 1800
+
 #ifndef PLANETE
 #define PLANETE
+
 typedef struct Planet_{
     float Mass;
     float Pos_x;
@@ -23,6 +26,7 @@ typedef struct _ListPlanet{
     struct _ListPlanet* start;
     Planet* P;
     struct _ListPlanet* suivant;
+    Point trace[TAILLETRACE];
 
 } ListPlanet;
 #endif

@@ -124,19 +124,20 @@ void GetNextPosition_lune(Planet* P, Planet* S,Planet* Sol, float deltatime){
 }
 
 //Affiche toute les traces
-void DrawTrace(Point tab[][1800], int l){
-    for(int i=0;i<l;i++){
-        for(int j = 0;j<1800;j++){
-            DrawPixel(tab[i][j].x, tab[i][j].y,  RAYWHITE);
+void DrawTrace(ListPlanet* liste){
+    while(liste!=NULL){
+        for(int j = 0;j<TAILLETRACE;j++){
+            DrawPixel(liste->trace[j].x,liste->trace[j].y,liste->P->couleur);
         }
+        liste = liste->suivant;
     }
 }
 
 //Ajoute les points dans les traces
-void UpdateTrace(Point tab[][1800],int i,int l, ListPlanet* liste){
-    for(int j=0; j<l;j++){
-        tab[j][i].x = liste->P->Pos_x;
-        tab[j][i].y = liste->P->Pos_y;
+void UpdateTrace(ListPlanet* liste,int i){
+    while(liste!=NULL){
+        liste->trace[i].x = liste->P->Pos_x;
+        liste->trace[i].y = liste->P->Pos_y;
         liste = liste->suivant;
     }
 }

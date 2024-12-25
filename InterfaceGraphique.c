@@ -3,8 +3,6 @@
 #include "ModelePhysique.h"
 
 #define MULTIPLICATEUR 1
-#define TAILLETRACE 1800
-
 
 int main(void)
 {
@@ -84,7 +82,6 @@ int main(void)
 
     //Traceur
     int i = 0;
-    Point Trace[len(liste)][TAILLETRACE];
     /* variables temporelles à mettre juste avant la boucle principale*/
     SetTargetFPS(60);
     double actualTime; //temps actuel
@@ -138,7 +135,7 @@ int main(void)
 
         
         //Trace
-        DrawTrace(Trace,len(liste));
+        DrawTrace(liste);
         //Trajectoire idéale
         //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,200, SKYBLUE);
         //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,304, ORANGE);
@@ -157,7 +154,7 @@ int main(void)
 
         
 
-        UpdateTrace(Trace, i, len(liste), liste);
+        UpdateTrace(liste, i);
         i++;
         GetNextVitesseAll(liste,&Soleil,deltaTime);
 
