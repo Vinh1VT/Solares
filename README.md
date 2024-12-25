@@ -23,3 +23,4 @@ Je vais tenter de tout reprendre fichier par fichier et faire un gros push sur m
 
 En fait non ça marche pas non plus
 Je vais recopier toutes les fonctions une par une du coup :)
+Finalement tout marche j'ai pas compris exactement comment mais c'est pas grave
