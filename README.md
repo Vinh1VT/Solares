@@ -24,3 +24,8 @@ Je vais tenter de tout reprendre fichier par fichier et faire un gros push sur m
 En fait non ça marche pas non plus
 Je vais recopier toutes les fonctions une par une du coup :)
 Finalement tout marche j'ai pas compris exactement comment mais c'est pas grave
+
+25/12/2024 : 
+Faut encore que je fasse le parsing du csv, je pense que le csv renverra un tableau de planetes qu'ensuite on ajoute dans la liste chainee pour pouvoir la gérer dynamiquement
+Ca permettra de gérer facilement la caméra sur les planetes + d'avoir la dynamique de la liste chainee
+Des que j'ai fini le parsing je me met au générateur d'astéroïdes et après ce sera que du détail

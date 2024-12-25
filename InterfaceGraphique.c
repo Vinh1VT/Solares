@@ -113,6 +113,9 @@ int main(void)
         if(IsKeyDown(KEY_ONE)){
             camera.target = (Vector2){Mercure.Pos_x ,Mercure.Pos_y };
         }
+        if(IsKeyDown(KEY_TWO)){
+            camera.target = (Vector2){Venus.Pos_x,Venus.Pos_y};
+        }
         if(IsKeyDown(KEY_THREE)){
             camera.target = (Vector2){Terre.Pos_x ,Terre.Pos_y };
         }
