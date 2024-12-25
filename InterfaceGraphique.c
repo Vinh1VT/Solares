@@ -1,7 +1,6 @@
 #include "raylib.h"
 #include <stdlib.h>
 #include "ModelePhysique.h"
-#include <stdio.h>
 
 #define MULTIPLICATEUR 1
 #define TAILLETRACE 1800
@@ -27,7 +26,9 @@ int main(void)
     .Pos_x = Soleil.Pos_x + 200,
     .Pos_y = Soleil.Pos_y,
     .Vitesse_x = 0,
-    .Vitesse_y = -58
+    .Vitesse_y = -58,
+    .couleur = BLUE,
+    .Taille = 10
     };
 
     Planet Mars ={
@@ -35,21 +36,27 @@ int main(void)
     .Pos_x = Soleil.Pos_x+304,
     .Pos_y = Soleil.Pos_y, 
     .Vitesse_x = 0,
-    .Vitesse_y = -47
+    .Vitesse_y = -47,
+    .couleur = RED,
+    .Taille = 10
     };
 
     Planet Mercure= {
         .Pos_x = Soleil.Pos_x+78,
         .Pos_y = Soleil.Pos_y,
         .Vitesse_x = 0,
-        .Vitesse_y = -95
+        .Vitesse_y = -95,
+        .couleur = WHITE,
+        .Taille =5
     };
 
     Planet Venus={
         .Pos_x = Soleil.Pos_x + 143,
         .Pos_y = Soleil.Pos_y,
         .Vitesse_x = 0,
-        .Vitesse_y = -70
+        .Vitesse_y = -70,
+        .couleur = ORANGE,
+        .Taille = 5
     };
 
 
@@ -60,10 +67,10 @@ int main(void)
         .couleur = BLUE,
         .Taille = 10
     };*/
-    ListPlanet* liste = newListe(Terre, BLUE,10);
-    append(liste,Mars,RED,10);
-    append(liste,Mercure,WHITE,5);
-    append(liste,Venus,ORANGE,5);
+    ListPlanet* liste = newListe(&Terre);
+    append(liste,&Mars);
+    append(liste,&Mercure);
+    append(liste,&Venus);
 
 
     InitWindow(ScreenWidth, ScreenHeight, "Simulation");

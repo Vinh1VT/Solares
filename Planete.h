@@ -8,6 +8,8 @@ typedef struct Planet_{
     float Pos_y;
     float Vitesse_x;
     float Vitesse_y;
+    Color couleur;
+    float Taille;
 } Planet;
 
 typedef struct Point_ {
@@ -19,10 +21,8 @@ typedef struct Point_ {
 typedef struct _ListPlanet{
 
     struct _ListPlanet* start;
-    Planet P;
+    Planet* P;
     struct _ListPlanet* suivant;
-    Color couleur;
-    float Taille;
 
 } ListPlanet;
 #endif

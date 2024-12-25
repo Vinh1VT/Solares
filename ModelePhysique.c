@@ -50,7 +50,7 @@ void GetNextPosition(Planet* P,float deltatime){
 }
 
 //Ajoute une planete a la liste des planetes
-void append(ListPlanet *L, Planet Plan, Color C, float T){
+void append(ListPlanet *L, Planet* Plan){
     ListPlanet* i = L;
     while(i->suivant!=NULL){
         i = i-> suivant;
@@ -58,8 +58,6 @@ void append(ListPlanet *L, Planet Plan, Color C, float T){
     i->suivant = malloc(sizeof(ListPlanet));
     i = i->suivant;
     i->P = Plan;
-    i->Taille = T;
-    i->couleur = C;
     i->start = L;
     i->suivant = NULL;
 }
@@ -79,11 +77,11 @@ int len(ListPlanet *L){
 void GetNextVitesseAll(ListPlanet* liste,Planet* S, float deltatime){
     ListPlanet* lis = liste;
     while(lis->suivant != NULL){
-        GetNextVitesse(&(lis->P),S,deltatime);
+        GetNextVitesse((lis->P),S,deltatime);
         lis = lis->suivant;
         //printf("%f %f \n", lis->P.Vitesse_x, lis->P.Pos_x);
     }
-    GetNextVitesse(&(lis->P),S,deltatime);
+    GetNextVitesse((lis->P),S,deltatime);
     return;
 }
 
@@ -91,20 +89,20 @@ void GetNextVitesseAll(ListPlanet* liste,Planet* S, float deltatime){
 void GetNextPositionAll(ListPlanet* liste, float deltatime){
     ListPlanet* lis = liste;
     while(lis->suivant != NULL){
-        GetNextPosition(&(lis->P),deltatime);
+        GetNextPosition((lis->P),deltatime);
         lis = lis->suivant;
     }
-    GetNextPosition(&(lis->P),deltatime);
+    GetNextPosition((lis->P),deltatime);
     return;
 }
 /* Parcourt la liste chainée pour dessiner toutes les planètes*/
 void DrawAll(ListPlanet* liste){
     ListPlanet* lis = liste;
     while(lis->suivant != NULL){
-        DrawCircle(lis->P.Pos_x,lis->P.Pos_y,lis->Taille,lis->couleur);
+        DrawCircle(lis->P->Pos_x,lis->P->Pos_y,lis->P->Taille,lis->P->couleur);
         lis = lis->suivant;
     }
-    DrawCircle(lis->P.Pos_x,lis->P.Pos_y,lis->Taille,lis->couleur);
+    DrawCircle(lis->P->Pos_x,lis->P->Pos_y,lis->P->Taille,lis->P->couleur);
     return;
 }
 
@@ -137,18 +135,16 @@ void DrawTrace(Point tab[][1800], int l){
 //Ajoute les points dans les traces
 void UpdateTrace(Point tab[][1800],int i,int l, ListPlanet* liste){
     for(int j=0; j<l;j++){
-        tab[j][i].x = liste->P.Pos_x;
-        tab[j][i].y = liste->P.Pos_y;
+        tab[j][i].x = liste->P->Pos_x;
+        tab[j][i].y = liste->P->Pos_y;
         liste = liste->suivant;
     }
 }
 
 //initialise une nouvelle liste
-ListPlanet* newListe(Planet P,Color couleur, float taille ){
+ListPlanet* newListe(Planet *P){
     ListPlanet* list = malloc(sizeof(ListPlanet));
     list->suivant = NULL;
-    list -> Taille = taille;
-    list -> couleur = couleur;
     list-> P = P;
     list->start = list;
     return list;
@@ -163,4 +159,16 @@ void freeList(ListPlanet* l){
         l = l->suivant;
         free(p);
     }
+}
+//Crée une nouvelle planete
+Planet* newPlanet(float M,float x, float y, float vx, float vy, Color couleur, float t){
+    Planet* P = malloc(sizeof(Planet));
+    P->Mass = M;
+    P->Pos_x = x;
+    P->Pos_y = y;
+    P->Vitesse_x = vx;
+    P-> Vitesse_y = vy;
+    P->couleur = couleur;
+    P->Taille = t;
+    return P;
 }
