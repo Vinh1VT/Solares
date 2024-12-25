@@ -13,4 +13,6 @@ void GetNextPositionAll(ListPlanet* liste, float deltatime);
 void DrawAll(ListPlanet* liste);
 void DrawTrace(Point tab[][1800], int l);
 void UpdateTrace(Point tab[][1800],int i,int l, ListPlanet* liste);
+ListPlanet* newListe(Planet P,Color couleur, float taille );
+void freeList(ListPlanet* l);
 #endif

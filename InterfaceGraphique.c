@@ -1,5 +1,4 @@
 #include "raylib.h"
-#include <stdbool.h>
 #include <stdlib.h>
 #include "ModelePhysique.h"
 #include <stdio.h>
@@ -54,16 +53,17 @@ int main(void)
     };
 
 
-    ListPlanet liste ={
+    /*ListPlanet liste ={
         .start = &liste,
         .P = Terre,
         .suivant = NULL,
         .couleur = BLUE,
         .Taille = 10
-    };
-    append(&liste,Mars,RED,10);
-    append(&liste,Mercure,WHITE,5);
-    append(&liste,Venus,ORANGE,5);
+    };*/
+    ListPlanet* liste = newListe(Terre, BLUE,10);
+    append(liste,Mars,RED,10);
+    append(liste,Mercure,WHITE,5);
+    append(liste,Venus,ORANGE,5);
 
 
     InitWindow(ScreenWidth, ScreenHeight, "Simulation");
@@ -77,7 +77,7 @@ int main(void)
 
     //Traceur
     int i = 0;
-    Point Trace[len(&liste)][TAILLETRACE];
+    Point Trace[len(liste)][TAILLETRACE];
     /* variables temporelles à mettre juste avant la boucle principale*/
     SetTargetFPS(60);
     double actualTime; //temps actuel
@@ -126,12 +126,12 @@ int main(void)
 
 
         DrawCircleGradient(Soleil.Pos_x, Soleil.Pos_y, 20, YELLOW, ORANGE);
-        DrawAll(&liste);
+        DrawAll(liste);
 
 
         
         //Trace
-        DrawTrace(Trace,len(&liste));
+        DrawTrace(Trace,len(liste));
         //Trajectoire idéale
         //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,200, SKYBLUE);
         //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,304, ORANGE);
@@ -150,15 +150,15 @@ int main(void)
 
         
 
-        UpdateTrace(Trace, i, len(&liste), &liste);
+        UpdateTrace(Trace, i, len(liste), liste);
         i++;
-        GetNextVitesseAll(&liste,&Soleil,deltaTime);
+        GetNextVitesseAll(liste,&Soleil,deltaTime);
 
-        GetNextPositionAll(&liste, deltaTime);
+        GetNextPositionAll(liste, deltaTime);
         //Soleil.Pos_x += 0.1;
     }
 
     CloseWindow();
-
+    freeList(liste);
     return EXIT_SUCCESS;
 }

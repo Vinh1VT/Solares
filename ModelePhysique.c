@@ -142,3 +142,25 @@ void UpdateTrace(Point tab[][1800],int i,int l, ListPlanet* liste){
         liste = liste->suivant;
     }
 }
+
+//initialise une nouvelle liste
+ListPlanet* newListe(Planet P,Color couleur, float taille ){
+    ListPlanet* list = malloc(sizeof(ListPlanet));
+    list->suivant = NULL;
+    list -> Taille = taille;
+    list -> couleur = couleur;
+    list-> P = P;
+    list->start = list;
+    return list;
+}
+
+//free une liste (pour faire propre)
+void freeList(ListPlanet* l){
+    ListPlanet* p;
+    l = l->suivant;
+    while(l!=NULL){
+        p = l;
+        l = l->suivant;
+        free(p);
+    }
+}
