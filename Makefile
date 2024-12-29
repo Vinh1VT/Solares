@@ -2,10 +2,10 @@
 CC = gcc
 CFLAGS = -Wall
 TARGET = Simulation
-OBJ = InterfaceGraphique.o ModelePhysique.o
+OBJ = InterfaceGraphique.o ModelePhysique.o Parsing.o
 
 $(TARGET) : $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET) -lm -lraylib -lcsv
+	$(CC) $(OBJ) -o $(TARGET) -lm -lraylib 
 	rm -f $(OBJ)
 
 InterfaceGraphique.o : InterfaceGraphique.c
@@ -14,6 +14,8 @@ InterfaceGraphique.o : InterfaceGraphique.c
 ModelePhysique.o : ModelePhysique.c
 	$(CC) $(CFLAGS) -c ModelePhysique.c
 
+Parsing.o : Parsing.c
+	$(CC) $(CFLAGS) -c Parsing.c
 
 clean:
 	rm -f $(TARGET)

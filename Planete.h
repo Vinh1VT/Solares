@@ -6,6 +6,7 @@
 #define PLANETE
 
 typedef struct Planet_{
+    char Nom[20];
     float Mass;
     float Pos_x;
     float Pos_y;

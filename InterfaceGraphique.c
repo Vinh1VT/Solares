@@ -1,6 +1,10 @@
 #include "raylib.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include "ModelePhysique.h"
+#include "Parsing.h"
+
+
 
 #define MULTIPLICATEUR 1
 
@@ -19,7 +23,7 @@ int main(void)
     .Vitesse_y = 0
     };
 
-    Planet Terre ={
+    /*Planet Terre ={
     .Mass = 1,
     .Pos_x = Soleil.Pos_x + 200,
     .Pos_y = Soleil.Pos_y,
@@ -55,9 +59,12 @@ int main(void)
         .Vitesse_y = -70,
         .couleur = ORANGE,
         .Taille = 5
-    };
-
-
+    };*/
+    
+    FILE *f = fopen("./files/Calculs_Projet.csv","r");
+    Planet* TableauPlanete = parse(f,Soleil.Pos_x,Soleil.Pos_y);
+    fclose(f);
+    
     /*ListPlanet liste ={
         .start = &liste,
         .P = Terre,
@@ -65,10 +72,11 @@ int main(void)
         .couleur = BLUE,
         .Taille = 10
     };*/
-    ListPlanet* liste = newListe(&Terre);
-    append(liste,&Mars);
-    append(liste,&Mercure);
-    append(liste,&Venus);
+    
+    ListPlanet* liste = newListe(TableauPlanete);
+    for(int t = 1; t<8; t++){
+        append(liste,&TableauPlanete[t]);
+    }
 
 
     InitWindow(ScreenWidth, ScreenHeight, "Simulation");
@@ -112,7 +120,7 @@ int main(void)
         if(camera.zoom<0.1f) camera.zoom=0.1f;
         if(IsKeyPressed(KEY_T)) afficheTrace = !afficheTrace;
         
-        if(IsKeyDown(KEY_ONE)){
+        /*if(IsKeyDown(KEY_ONE)){
             camera.target = (Vector2){Mercure.Pos_x ,Mercure.Pos_y };
         }
         if(IsKeyDown(KEY_TWO)){
@@ -123,8 +131,14 @@ int main(void)
         }
         if(IsKeyDown(KEY_FOUR)){
             camera.target = (Vector2){Mars.Pos_x ,Mars.Pos_y };
+        }*/
         }
-        }
+
+        ListPlanet* ptr = liste;
+        while(ptr !=NULL){
+            printf("%s\n",ptr->P->Nom);
+            ptr = ptr->suivant;
+        }    
 
 
         BeginDrawing();
@@ -169,5 +183,6 @@ int main(void)
 
     CloseWindow();
     freeList(liste);
+    free(TableauPlanete);
     return EXIT_SUCCESS;
 }
