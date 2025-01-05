@@ -1,4 +1,3 @@
-#variables
 CC = gcc
 CFLAGS = -Wall
 TARGET = Simulation

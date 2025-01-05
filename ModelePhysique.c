@@ -79,7 +79,6 @@ void GetNextVitesseAll(ListPlanet* liste,Planet* S, float deltatime){
     while(lis->suivant != NULL){
         GetNextVitesse((lis->P),S,deltatime);
         lis = lis->suivant;
-        //printf("%f %f \n", lis->P.Vitesse_x, lis->P.Pos_x);
     }
     GetNextVitesse((lis->P),S,deltatime);
     return;

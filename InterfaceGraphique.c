@@ -23,55 +23,10 @@ int main(void)
     .Vitesse_y = 0
     };
 
-    /*Planet Terre ={
-    .Mass = 1,
-    .Pos_x = Soleil.Pos_x + 200,
-    .Pos_y = Soleil.Pos_y,
-    .Vitesse_x = 0,
-    .Vitesse_y = -58,
-    .couleur = BLUE,
-    .Taille = 10
-    };
-
-    Planet Mars ={
-    .Mass = 0.1,
-    .Pos_x = Soleil.Pos_x+304,
-    .Pos_y = Soleil.Pos_y,
-    .Vitesse_x = 0,
-    .Vitesse_y = -47,
-    .couleur = RED,
-    .Taille = 10
-    };
-
-    Planet Mercure= {
-        .Pos_x = Soleil.Pos_x+78,
-        .Pos_y = Soleil.Pos_y,
-        .Vitesse_x = 0,
-        .Vitesse_y = -95,
-        .couleur = WHITE,
-        .Taille =5
-    };
-
-    Planet Venus={
-        .Pos_x = Soleil.Pos_x + 143,
-        .Pos_y = Soleil.Pos_y,
-        .Vitesse_x = 0,
-        .Vitesse_y = -70,
-        .couleur = ORANGE,
-        .Taille = 5
-    };*/
 
     FILE *f = fopen("./files/Calculs_Projet.csv","r");
     Planet* TableauPlanete = parse(f,Soleil.Pos_x,Soleil.Pos_y);
     fclose(f);
-
-    /*ListPlanet liste ={
-        .start = &liste,
-        .P = Terre,
-        .suivant = NULL,
-        .couleur = BLUE,
-        .Taille = 10
-    };*/
 
     ListPlanet* liste = newListe(TableauPlanete);
     for(int t = 1; t<8; t++){
@@ -140,11 +95,6 @@ int main(void)
         }
         }
 
-        //ListPlanet* ptr = liste;
-        /*while(ptr !=NULL){
-            printf("%s\n",ptr->P->Nom);
-            ptr = ptr->suivant;
-            }  */
 
 
         BeginDrawing();
@@ -160,10 +110,7 @@ int main(void)
 
         //Trace
         if(afficheTrace) DrawTrace(liste);
-        //Trajectoire idéale
-        //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,200, SKYBLUE);
-        //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,304, ORANGE);
-        //DrawCircleLines(Soleil.Pos_x,Soleil.Pos_y,78, YELLOW);
+
 
 
 
@@ -183,7 +130,6 @@ int main(void)
         GetNextVitesseAll(liste,&Soleil,deltaTime);
 
         GetNextPositionAll(liste, deltaTime);
-        //Soleil.Pos_x += 0.1;
     }
 
     CloseWindow();
