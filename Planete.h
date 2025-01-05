@@ -1,9 +1,10 @@
 #include "raylib.h"
 
-#define TAILLETRACE 1800
 
 #ifndef PLANETE
 #define PLANETE
+
+#define TAILLETRACE 1800
 
 typedef struct Planet_{
     char Nom[20];

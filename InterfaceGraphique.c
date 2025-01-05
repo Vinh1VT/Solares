@@ -97,6 +97,8 @@ int main(void)
     double previousTime = GetTime(); //temps de début de la simulation
     double deltaTime = 0; //temps écoulé depuis le début de la simulation
     float deltaTime2 = 0;
+    //Tableau des bits qui marquent l'état des planetes (affiches ou non)
+    int PlaneteAffichee[8] = {1,1,1,1,1,1,1,1};
 
     while (!WindowShouldClose())
     {
@@ -120,9 +122,20 @@ int main(void)
         if(camera.zoom<0.1f) camera.zoom=0.1f;
         if(IsKeyPressed(KEY_T)) afficheTrace = !afficheTrace;
 
-        for(int c = 0; c<=8;c++){
+        for(int c = 0; c<8;c++){
             if(IsKeyDown(49+c)){
                 camera.target = (Vector2){TableauPlanete[c].Pos_x, TableauPlanete[c].Pos_y};
+            }
+        }
+        for(int c = 0; c<8;c++){
+            if(IsKeyPressed(321+c)){
+                if(PlaneteAffichee[c]){
+                    liste = RemovePlanet(TableauPlanete[c].Nom, liste);
+                    PlaneteAffichee[c] = 0;
+                } else{
+                    append(liste,&TableauPlanete[c]);
+                    PlaneteAffichee[c] = 1;
+                }
             }
         }
         }
@@ -135,7 +148,6 @@ int main(void)
 
 
         BeginDrawing();
-
         ClearBackground(BLACK);
 
         BeginMode2D(camera);

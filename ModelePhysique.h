@@ -16,4 +16,5 @@ void UpdateTrace(ListPlanet* liste,int i);
 ListPlanet* newListe(Planet *P);
 void freeList(ListPlanet* l);
 Planet* newPlanet(float M,float x, float y, float vx, float vy, Color couleur, float t);
+ListPlanet* RemovePlanet(char* Name,ListPlanet* List);
 #endif

@@ -173,3 +173,21 @@ Planet* newPlanet(float M,float x, float y, float vx, float vy, Color couleur, f
     P->Taille = t;
     return P;
 }
+
+ListPlanet* RemovePlanet(char* Name,ListPlanet* List){
+    ListPlanet* ptr = List;
+    if(List->suivant == NULL || List == NULL){
+        return List;
+    }
+    if(ptr->P->Nom == Name){
+        return List->suivant;
+    }
+    while(ptr->suivant != NULL){
+        if(ptr->suivant->P->Nom == Name){
+            ptr->suivant = ptr->suivant->suivant;
+            return List;
+        }
+        ptr = ptr->suivant;
+    }
+    return List;
+}
