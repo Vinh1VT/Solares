@@ -133,7 +133,7 @@ int main(void)
         GetNextVitesseAll(liste,&Soleil,deltaTime);
 
         GetNextPositionAll(liste, deltaTime);
-        DrawFPS(Soleil.Pos_x,Soleil.Pos_y);
+        //DrawFPS(Soleil.Pos_x,Soleil.Pos_y);
     }
 
     CloseWindow();
