@@ -46,7 +46,7 @@ int main(void)
 
     //Traceur
     int i = 0;
-    bool afficheTrace = true;
+    bool afficheTrace = false;
     bool afficheNom = true;
     /* variables temporelles à mettre juste avant la boucle principale*/
     SetTargetFPS(60);

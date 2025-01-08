@@ -212,7 +212,7 @@ void add_asteroide(int nbr,int rmin, int rmax, Planet* centr ,ListPlanet* list){
     float theta = 0;
     for (int i=0;i<nbr;i++){
         int r = GetRandomValue(rmin,rmax);
-        int taille = GetRandomValue(2,8);
+        int taille = GetRandomValue(1,4);
         Planet* plan = newPlanet(0.1,centr->Pos_x+r*cos(theta),centr->Pos_y+r*sin(theta),sin(theta)*sqrt(G*centr->Mass/r),-cos(theta)*sqrt(G*centr->Mass/r),GRAY,taille,"Asteroide");
         append(list,plan,false);
         theta += 2*PI/nbr;
