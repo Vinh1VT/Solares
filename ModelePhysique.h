@@ -7,7 +7,6 @@ void GetNextPosition(Planet* P, Planet* S,float deltatime);
 void GetNextVitesse(Planet* P, Planet* S,float deltatime);
 void append(ListPlanet* L, Planet* P, bool trace);
 int len(ListPlanet *L);
-void GetNextPosition_lune(Planet* P, Planet* S,Planet* Sol, float deltatime);
 void GetNextVitesseAll(ListPlanet* liste,Planet* S, float deltatime);
 void GetNextPositionAll(ListPlanet* liste, float deltatime);
 void DrawAll(ListPlanet* liste);
