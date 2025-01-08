@@ -190,3 +190,12 @@ ListPlanet* RemovePlanet(char* Name,ListPlanet* List){
     }
     return List;
 }
+
+void DrawName(ListPlanet* liste,Camera2D* camera){
+    Font f = GetFontDefault();
+    while (liste != NULL){
+        Planet* P = liste->P;
+        DrawText(P->Nom, P->Pos_x, P->Pos_y+P->Taille+5,10*(1/camera->zoom), P->couleur);
+        liste = liste->suivant;
+    }
+}

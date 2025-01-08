@@ -17,4 +17,5 @@ ListPlanet* newListe(Planet *P);
 void freeList(ListPlanet* l);
 Planet* newPlanet(float M,float x, float y, float vx, float vy, Color couleur, float t);
 ListPlanet* RemovePlanet(char* Name,ListPlanet* List);
+void DrawName(ListPlanet* liste, Camera2D* camera);
 #endif

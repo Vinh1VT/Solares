@@ -46,6 +46,7 @@ int main(void)
     //Traceur
     int i = 0;
     bool afficheTrace = true;
+    bool afficheNom = true;
     /* variables temporelles à mettre juste avant la boucle principale*/
     SetTargetFPS(60);
     double actualTime; //temps actuel
@@ -66,16 +67,17 @@ int main(void)
 
         //controle de la caméra
         if(true){
-        if(IsKeyDown(KEY_UP)) camera.target.y -= 2 + (1-camera.zoom);
-        if(IsKeyDown(KEY_DOWN)) camera.target.y += 2+ (1-camera.zoom);
-        if(IsKeyDown(KEY_RIGHT)) camera.target.x += 2+ (1-camera.zoom);
-        if(IsKeyDown(KEY_LEFT)) camera.target.x -= 2+ (1-camera.zoom);
+        if(IsKeyDown(KEY_UP)) camera.target.y -= 2 * (1/camera.zoom);
+        if(IsKeyDown(KEY_DOWN)) camera.target.y += 2* (1/camera.zoom);
+        if(IsKeyDown(KEY_RIGHT)) camera.target.x += 2* (1/camera.zoom);
+        if(IsKeyDown(KEY_LEFT)) camera.target.x -= 2* (1/camera.zoom);
         if(IsKeyDown(KEY_ENTER)) camera.target = (Vector2){Soleil.Pos_x,Soleil.Pos_y};
         if(IsKeyDown(KEY_RIGHT_SHIFT)) camera.zoom = 1;
         if(IsKeyPressed(KEY_KP_ADD)) camera.zoom += 0.1f;
         if(IsKeyPressed(KEY_KP_SUBTRACT)) camera.zoom -= 0.1f;
         if(camera.zoom<0.1f) camera.zoom=0.1f;
         if(IsKeyPressed(KEY_T)) afficheTrace = !afficheTrace;
+        if(IsKeyPressed(KEY_N)) afficheNom = !afficheNom;
 
         for(int c = 0; c<8;c++){
             if(IsKeyDown(49+c)){
@@ -96,7 +98,6 @@ int main(void)
         }
 
 
-
         BeginDrawing();
         ClearBackground(BLACK);
 
@@ -111,7 +112,7 @@ int main(void)
         //Trace
         if(afficheTrace) DrawTrace(liste);
 
-
+        if(afficheNom) DrawName(liste, &camera);
 
 
         EndMode2D();
