@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 /* Quelques constantes*/
-float G = 6.67E-20;
+const float G = 6.67E-20;
 
 
 /* Retourne le rayon entre P et T, peu importe l'ordre*/
@@ -192,10 +192,9 @@ ListPlanet* RemovePlanet(char* Name,ListPlanet* List){
 }
 
 void DrawName(ListPlanet* liste,Camera2D* camera){
-    Font f = GetFontDefault();
     while (liste != NULL){
         Planet* P = liste->P;
-        DrawText(P->Nom, P->Pos_x, P->Pos_y+P->Taille+5,10*(1/camera->zoom), P->couleur);
+        DrawText(P->Nom, P->Pos_x, P->Pos_y+P->Taille+5,((float)(10*GetScreenWidth())/1000)*(1/camera->zoom), P->couleur);
         liste = liste->suivant;
     }
 }
