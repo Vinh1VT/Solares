@@ -3,6 +3,7 @@
 #include "Planete.h"
 #include "raylib.h"
 #include <stdio.h>
+#include <string.h>
 
 /* Quelques constantes*/
 const float G = 6.67E-20;
@@ -50,7 +51,7 @@ void GetNextPosition(Planet* P,float deltatime){
 }
 
 //Ajoute une planete a la liste des planetes
-void append(ListPlanet *L, Planet* Plan){
+void append(ListPlanet *L, Planet* Plan,bool trace){
     ListPlanet* i = L;
     while(i->suivant!=NULL){
         i = i-> suivant;
@@ -60,6 +61,7 @@ void append(ListPlanet *L, Planet* Plan){
     i->P = Plan;
     i->start = L;
     i->suivant = NULL;
+    i->affiche = trace;
 }
 
 //Calcule la longueur de la liste des planetes
@@ -126,6 +128,7 @@ void GetNextPosition_lune(Planet* P, Planet* S,Planet* Sol, float deltatime){
 void DrawTrace(ListPlanet* liste){
     while(liste!=NULL){
         for(int j = 0;j<TAILLETRACE;j++){
+            if(liste->affiche)
             DrawPixel(liste->trace[j].x,liste->trace[j].y,liste->P->couleur);
         }
         liste = liste->suivant;
@@ -135,8 +138,10 @@ void DrawTrace(ListPlanet* liste){
 //Ajoute les points dans les traces
 void UpdateTrace(ListPlanet* liste,int i){
     while(liste!=NULL){
+        if(liste->affiche){
         liste->trace[i].x = liste->P->Pos_x;
         liste->trace[i].y = liste->P->Pos_y;
+        }
         liste = liste->suivant;
     }
 }
@@ -161,8 +166,9 @@ void freeList(ListPlanet* l){
     }
 }
 //Crée une nouvelle planete
-Planet* newPlanet(float M,float x, float y, float vx, float vy, Color couleur, float t){
+Planet* newPlanet(float M,float x, float y, float vx, float vy, Color couleur, float t, char* Nom){
     Planet* P = malloc(sizeof(Planet));
+    strcpy(P->Nom,Nom);
     P->Mass = M;
     P->Pos_x = x;
     P->Pos_y = y;
@@ -194,7 +200,8 @@ ListPlanet* RemovePlanet(char* Name,ListPlanet* List){
 void DrawName(ListPlanet* liste,Camera2D* camera){
     while (liste != NULL){
         Planet* P = liste->P;
-        DrawText(P->Nom, P->Pos_x, P->Pos_y+P->Taille+5,((float)(10*GetScreenWidth())/1000)*(1/camera->zoom), P->couleur);
+        if(liste->affiche)
+            DrawText(P->Nom, P->Pos_x, P->Pos_y+P->Taille+5,((float)(10*GetScreenWidth())/1000)*(1/camera->zoom), P->couleur);
         liste = liste->suivant;
     }
 }
@@ -205,8 +212,8 @@ void add_asteroide(int nbr,int rmin, int rmax, Planet* centr ,ListPlanet* list){
     for (int i=0;i<nbr;i++){
         int r = GetRandomValue(rmin,rmax);
         int taille = GetRandomValue(2,8);
-        Planet* plan = newPlanet(0.1,centr->Pos_x+r*cos(theta),centr->Pos_y+r*sin(theta),sin(theta)*sqrt(G*centr->Mass/r),-cos(theta)*sqrt(G*centr->Mass/r),GRAY,taille);
-        append(list,plan);
+        Planet* plan = newPlanet(0.1,centr->Pos_x+r*cos(theta),centr->Pos_y+r*sin(theta),sin(theta)*sqrt(G*centr->Mass/r),-cos(theta)*sqrt(G*centr->Mass/r),GRAY,taille,"Asteroide");
+        append(list,plan,false);
         theta += 2*PI/nbr;
     }
     return;

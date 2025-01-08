@@ -30,14 +30,14 @@ int main(void)
 
     ListPlanet* liste = newListe(TableauPlanete);
     for(int t = 1; t<8; t++){
-        append(liste,&TableauPlanete[t]);
+        append(liste,&TableauPlanete[t],true);
     }
 
 
     InitWindow(ScreenWidth, ScreenHeight, "Simulation");
     SetWindowState(FLAG_WINDOW_RESIZABLE);
 
-    add_asteroide(100,500,800,&Soleil,liste);
+    add_asteroide(2500,500,800,&Soleil,liste);
 
     //Caméra
     Camera2D camera = {0};
@@ -92,7 +92,7 @@ int main(void)
                     liste = RemovePlanet(TableauPlanete[c].Nom, liste);
                     PlaneteAffichee[c] = 0;
                 } else{
-                    append(liste,&TableauPlanete[c]);
+                    append(liste,&TableauPlanete[c],true);
                     PlaneteAffichee[c] = 1;
                 }
             }
@@ -133,6 +133,7 @@ int main(void)
         GetNextVitesseAll(liste,&Soleil,deltaTime);
 
         GetNextPositionAll(liste, deltaTime);
+        DrawFPS(Soleil.Pos_x,Soleil.Pos_y);
     }
 
     CloseWindow();

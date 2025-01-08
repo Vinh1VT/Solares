@@ -29,6 +29,7 @@ typedef struct _ListPlanet{
     Planet* P;
     struct _ListPlanet* suivant;
     Point trace[TAILLETRACE];
+    bool affiche;
 
 } ListPlanet;
 #endif
