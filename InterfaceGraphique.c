@@ -28,7 +28,7 @@ int main(void)
     Planet* TableauPlanete = parse(f,Soleil.Pos_x,Soleil.Pos_y);
     fclose(f);
 
-    ListPlanet* liste = newListe(TableauPlanete);
+    ListPlanet* liste = newListe(TableauPlanete, true);
     for(int t = 1; t<8; t++){
         append(liste,&TableauPlanete[t],true);
     }
@@ -38,7 +38,6 @@ int main(void)
     SetWindowState(FLAG_WINDOW_RESIZABLE);
 
     add_asteroide(2500,500,800,&Soleil,liste);
-
     //Caméra
     Camera2D camera = {0};
     camera.zoom = 1.0f;

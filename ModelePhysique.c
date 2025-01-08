@@ -51,7 +51,7 @@ void GetNextPosition(Planet* P,float deltatime){
 }
 
 //Ajoute une planete a la liste des planetes
-void append(ListPlanet *L, Planet* Plan,bool trace){
+void append(ListPlanet *L, Planet* Plan,bool planete){
     ListPlanet* i = L;
     while(i->suivant!=NULL){
         i = i-> suivant;
@@ -61,7 +61,7 @@ void append(ListPlanet *L, Planet* Plan,bool trace){
     i->P = Plan;
     i->start = L;
     i->suivant = NULL;
-    i->affiche = trace;
+    i->planete = planete;
 }
 
 //Calcule la longueur de la liste des planetes
@@ -128,7 +128,7 @@ void GetNextPosition_lune(Planet* P, Planet* S,Planet* Sol, float deltatime){
 void DrawTrace(ListPlanet* liste){
     while(liste!=NULL){
         for(int j = 0;j<TAILLETRACE;j++){
-            if(liste->affiche)
+            if(liste->planete)
             DrawPixel(liste->trace[j].x,liste->trace[j].y,liste->P->couleur);
         }
         liste = liste->suivant;
@@ -138,7 +138,7 @@ void DrawTrace(ListPlanet* liste){
 //Ajoute les points dans les traces
 void UpdateTrace(ListPlanet* liste,int i){
     while(liste!=NULL){
-        if(liste->affiche){
+        if(liste->planete){
         liste->trace[i].x = liste->P->Pos_x;
         liste->trace[i].y = liste->P->Pos_y;
         }
@@ -147,11 +147,12 @@ void UpdateTrace(ListPlanet* liste,int i){
 }
 
 //initialise une nouvelle liste
-ListPlanet* newListe(Planet *P){
+ListPlanet* newListe(Planet *P, bool planete){
     ListPlanet* list = malloc(sizeof(ListPlanet));
     list->suivant = NULL;
     list-> P = P;
     list->start = list;
+    list -> planete = planete;
     return list;
 }
 
@@ -200,7 +201,7 @@ ListPlanet* RemovePlanet(char* Name,ListPlanet* List){
 void DrawName(ListPlanet* liste,Camera2D* camera){
     while (liste != NULL){
         Planet* P = liste->P;
-        if(liste->affiche)
+        if(liste->planete)
             DrawText(P->Nom, P->Pos_x, P->Pos_y+P->Taille+5,((float)(10*GetScreenWidth())/1000)*(1/camera->zoom), P->couleur);
         liste = liste->suivant;
     }

@@ -13,7 +13,7 @@ void GetNextPositionAll(ListPlanet* liste, float deltatime);
 void DrawAll(ListPlanet* liste);
 void DrawTrace(ListPlanet* liste);
 void UpdateTrace(ListPlanet* liste,int i);
-ListPlanet* newListe(Planet *P);
+ListPlanet* newListe(Planet *P, bool asteroide);
 void freeList(ListPlanet* l);
 Planet* newPlanet(float M,float x, float y, float vx, float vy, Color couleur, float t, char* Nom);
 ListPlanet* RemovePlanet(char* Name,ListPlanet* List);
