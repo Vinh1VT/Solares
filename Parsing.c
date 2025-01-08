@@ -30,13 +30,13 @@ Color Conversion_couleur(char* str){
     if (strcmp(str, "BLANK") == 0) return BLANK;
     if (strcmp(str, "MAGENTA") == 0) return MAGENTA;
     if (strcmp(str, "RAYWHITE") == 0) return RAYWHITE;
-    return BLACK; // Couleur par défaut si inconnue
+    return BLACK;
 }
 
 
 
 Planet* parse(FILE *f, float PosInitX,float PosInitY){
-    char ligne[256];
+    char ligne[100];
     int nb_planete = 8;
     Planet *tableau = malloc(nb_planete*sizeof(Planet));
     int compteur = 0;
@@ -50,7 +50,7 @@ Planet* parse(FILE *f, float PosInitX,float PosInitY){
         Planet P;
         char couleur[20];
 
-        sscanf(ligne,"%50[^,],%f,%f,%f,%f,%19s",P.Nom,&P.Taille,&P.Pos_x,&P.Mass,&P.Vitesse_y,couleur);
+        sscanf(ligne,"%15[^,],%f,%f,%f,%f,%19s",P.Nom,&P.Taille,&P.Pos_x,&P.Mass,&P.Vitesse_y,couleur);
 
         P.couleur = Conversion_couleur(couleur);
         P.Pos_x += PosInitX;
