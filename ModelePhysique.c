@@ -198,3 +198,16 @@ void DrawName(ListPlanet* liste,Camera2D* camera){
         liste = liste->suivant;
     }
 }
+
+/* ajoute nbr asteroides dans la liste, centrés autour de centr, entre les rayons rmin et rmax*/
+void add_asteroide(int nbr,int rmin, int rmax, Planet* centr ,ListPlanet* list){
+    float theta = 0;
+    for (int i=0;i<nbr;i++){
+        int r = GetRandomValue(rmin,rmax);
+        int taille = GetRandomValue(2,8);
+        Planet* plan = newPlanet(0.1,centr->Pos_x+r*cos(theta),centr->Pos_y+r*sin(theta),(centr->Pos_y+r*sin(theta)-centr->Pos_y)/20,(centr->Pos_x-(centr->Pos_x+r*cos(theta)))/20,GRAY,taille);
+        append(list,plan);
+        theta += 2*PI/nbr;
+    }
+    return;
+}

@@ -37,6 +37,8 @@ int main(void)
     InitWindow(ScreenWidth, ScreenHeight, "Simulation");
     SetWindowState(FLAG_WINDOW_RESIZABLE);
 
+    add_asteroide(100,500,800,&Soleil,liste);
+
     //Caméra
     Camera2D camera = {0};
     camera.zoom = 1.0f;
