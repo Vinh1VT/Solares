@@ -68,9 +68,9 @@ int main(void)
         //controle de la caméra
         if(true){
         if(IsKeyDown(KEY_UP)) camera.target.y -= 2 * (1/camera.zoom);
-        if(IsKeyDown(KEY_DOWN)) camera.target.y += 2* (1/camera.zoom);
-        if(IsKeyDown(KEY_RIGHT)) camera.target.x += 2* (1/camera.zoom);
-        if(IsKeyDown(KEY_LEFT)) camera.target.x -= 2* (1/camera.zoom);
+        if(IsKeyDown(KEY_DOWN)) camera.target.y += 2 * (1/camera.zoom);
+        if(IsKeyDown(KEY_RIGHT)) camera.target.x += 2 * (1/camera.zoom);
+        if(IsKeyDown(KEY_LEFT)) camera.target.x -= 2 * (1/camera.zoom);
         if(IsKeyDown(KEY_ENTER)) camera.target = (Vector2){Soleil.Pos_x,Soleil.Pos_y};
         if(IsKeyDown(KEY_RIGHT_SHIFT)) camera.zoom = 1;
         if(IsKeyPressed(KEY_KP_ADD)) camera.zoom += 0.1f;
