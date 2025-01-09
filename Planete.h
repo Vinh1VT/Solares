@@ -25,7 +25,6 @@ typedef struct Point_ {
 
 typedef struct _ListPlanet{
 
-    struct _ListPlanet* start;
     Planet* P;
     struct _ListPlanet* suivant;
     Point trace[TAILLETRACE];

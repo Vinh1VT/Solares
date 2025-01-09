@@ -59,7 +59,6 @@ void append(ListPlanet *L, Planet* Plan,bool planete){
     i->suivant = malloc(sizeof(ListPlanet));
     i = i->suivant;
     i->P = Plan;
-    i->start = L;
     i->suivant = NULL;
     i->planete = planete;
 }
@@ -135,7 +134,6 @@ ListPlanet* newListe(Planet *P, bool planete){
     ListPlanet* list = malloc(sizeof(ListPlanet));
     list->suivant = NULL;
     list-> P = P;
-    list->start = list;
     list -> planete = planete;
     return list;
 }
