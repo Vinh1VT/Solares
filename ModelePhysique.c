@@ -61,6 +61,9 @@ void append(ListPlanet *L, Planet* Plan,bool planete){
     i->P = Plan;
     i->suivant = NULL;
     i->planete = planete;
+    if(planete){
+        i->trace = malloc(TAILLETRACE*sizeof(Point));
+    }
 }
 
 //Calcule la longueur de la liste des planetes
@@ -135,6 +138,9 @@ ListPlanet* newListe(Planet *P, bool planete){
     list->suivant = NULL;
     list-> P = P;
     list -> planete = planete;
+    if(planete){
+        list->trace = malloc(TAILLETRACE*sizeof(Point));
+    }
     return list;
 }
 
