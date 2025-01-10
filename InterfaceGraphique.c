@@ -32,12 +32,12 @@ int main(void)
     for(int t = 1; t<8; t++){
         append(liste,&TableauPlanete[t],true);
     }
+    add_asteroide(2500,500,800,&Soleil,liste);
 
 
     InitWindow(ScreenWidth, ScreenHeight, "Simulation");
     SetWindowState(FLAG_WINDOW_RESIZABLE);
 
-    add_asteroide(2500,500,800,&Soleil,liste);
     //Caméra
     Camera2D camera = {0};
     camera.zoom = 1.0f;
@@ -53,7 +53,6 @@ int main(void)
     double actualTime; //temps actuel
     double previousTime = GetTime(); //temps de début de la simulation
     double deltaTime = 0; //temps écoulé depuis le début de la simulation
-    float deltaTime2 = 0;
     //Tableau des bits qui marquent l'état des planetes (affiches ou non)
     int PlaneteAffichee[8] = {1,1,1,1,1,1,1,1};
 
@@ -67,7 +66,7 @@ int main(void)
         camera.offset = (Vector2){(float)ScreenWidth/2,(float)ScreenHeight/2};
 
         //controle de la caméra
-        if(true){
+        {
         if(IsKeyDown(KEY_UP)) camera.target.y -= 2 * (1/camera.zoom);
         if(IsKeyDown(KEY_DOWN)) camera.target.y += 2 * (1/camera.zoom);
         if(IsKeyDown(KEY_RIGHT)) camera.target.x += 2 * (1/camera.zoom);
@@ -122,7 +121,6 @@ int main(void)
 
         actualTime = GetTime();
         deltaTime = (actualTime - previousTime)*MULTIPLICATEUR;
-        deltaTime2 += actualTime - previousTime;
         previousTime = actualTime;
 
 
