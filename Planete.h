@@ -17,17 +17,11 @@ typedef struct Planet_{
     float Taille;
 } Planet;
 
-typedef struct Point_ {
-    float x;
-    float y;
-} Point;
-
-
 typedef struct _ListPlanet{
 
     Planet* P;
     struct _ListPlanet* suivant;
-    Point* trace;
+    Vector2* trace;
     bool planete;
 
 } ListPlanet;

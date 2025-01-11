@@ -62,7 +62,7 @@ void append(ListPlanet *L, Planet* Plan,bool planete){
     i->suivant = NULL;
     i->planete = planete;
     if(planete){
-        i->trace = malloc(TAILLETRACE*sizeof(Point));
+        i->trace = malloc(TAILLETRACE*sizeof(Vector2));
     }
 }
 
@@ -139,7 +139,7 @@ ListPlanet* newListe(Planet *P, bool planete){
     list-> P = P;
     list -> planete = planete;
     if(planete){
-        list->trace = malloc(TAILLETRACE*sizeof(Point));
+        list->trace = malloc(TAILLETRACE*sizeof(Vector2));
     }
     return list;
 }
