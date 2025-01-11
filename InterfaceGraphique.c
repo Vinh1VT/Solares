@@ -10,8 +10,8 @@
 
 int main(void)
 {
-    int ScreenWidth = 1000;
-    int ScreenHeight = 1000;
+    int ScreenWidth = GetScreenWidth();
+    int ScreenHeight = GetScreenHeight();
 
 
 
@@ -34,10 +34,9 @@ int main(void)
     }
     add_asteroide(2500,500,800,&Soleil,liste);
 
-
     InitWindow(ScreenWidth, ScreenHeight, "Simulation");
     SetWindowState(FLAG_WINDOW_RESIZABLE);
-
+    SetWindowState(FLAG_FULLSCREEN_MODE);
     //Caméra
     Camera2D camera = {0};
     camera.zoom = 1.0f;
