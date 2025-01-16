@@ -40,7 +40,7 @@ int main(void)
     SetWindowState(FLAG_WINDOW_RESIZABLE);
     SetWindowState(FLAG_FULLSCREEN_MODE);
     //Caméra
-    Camera2D camera = {0};
+    Camera2D camera;
     camera.zoom = 1.0f;
     camera.target = (Vector2){(float)ScreenWidth/2,(float)ScreenHeight/2};
 
