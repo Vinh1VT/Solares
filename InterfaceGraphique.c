@@ -23,8 +23,10 @@ int main(void)
     .Vitesse_y = 0
     };
 
-
-    FILE *f = fopen("./files/Calculs_Projet.csv","r");
+    FILE *f;
+    if(!(f = fopen("./files/Calculs_Projet.csv","r"))){
+        fprintf(stderr,"erreur d'ouverture du fichier");
+    };
     Planet* TableauPlanete = parse(f,Soleil.Pos_x,Soleil.Pos_y);
     fclose(f);
 

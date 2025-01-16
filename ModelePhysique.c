@@ -135,11 +135,17 @@ void UpdateTrace(ListPlanet* liste,int i){
 //initialise une nouvelle liste
 ListPlanet* newListe(Planet *P, bool planete){
     ListPlanet* list = malloc(sizeof(ListPlanet));
+    if(list==NULL){
+        fprintf(stderr,"erreur d'allocation mémoire");
+    }
     list->suivant = NULL;
     list-> P = P;
     list -> planete = planete;
     if(planete){
         list->trace = malloc(TAILLETRACE*sizeof(Vector2));
+        if(list->trace == NULL){
+            fprintf(stderr,"erreur d'allocation mémoire");
+        }
     }
     return list;
 }
@@ -157,6 +163,9 @@ void freeList(ListPlanet* l){
 //Crée une nouvelle planete
 Planet* newPlanet(float M,float x, float y, float vx, float vy, Color couleur, float t, char* Nom){
     Planet* P = malloc(sizeof(Planet));
+    if(P == NULL){
+        fprintf(stderr,"erreur d'allocation mémoire");
+    }
     strcpy(P->Nom,Nom);
     P->Mass = M;
     P->Pos_x = x;

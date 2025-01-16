@@ -39,12 +39,18 @@ Planet* parse(FILE *f, float PosInitX,float PosInitY){
     char ligne[100];
     int nb_planete = 8;
     Planet *tableau = malloc(nb_planete*sizeof(Planet));
+    if(tableau==NULL){
+        fprintf(stderr,"erreur d'allocation mémoire");
+    };
     int compteur = 0;
     fgets(ligne,sizeof(ligne),f);
     while(fgets(ligne,sizeof(ligne),f)){
         
         if(compteur >= nb_planete){
             tableau = realloc(tableau,(compteur+1)*sizeof(Planet));
+            if(tableau==NULL){
+                fprintf(stderr,"erreur d'allocation mémoire");
+            };
         }
 
         Planet P;
