@@ -14,3 +14,4 @@ Camera controls (moving and zooming across the system) are fully implemented as 
 The planets are displayed and their positions are calculated in a linked list, which allows for dynamic displaying, planets can be toggled via key 1-8 of the Numpad
 
 Depends on Raylib 5.5 : https://github.com/raysan5/raylib
+Pre-compiled executables that do not need raylib can be downloaded from the [release](https://github.com/Vinh1VT/Solares/releases)
