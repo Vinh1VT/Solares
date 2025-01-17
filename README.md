@@ -12,3 +12,5 @@ Camera controls (moving and zooming across the system) are fully implemented as 
   - N / T to toggle names and traces of the planets
  
 The planets are displayed and their positions are calculated in a linked list, which allows for dynamic displaying, planets can be toggled via key 1-8 of the Numpad
+
+Depends on Raylib 5.5 : https://github.com/raysan5/raylib
