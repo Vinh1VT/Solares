@@ -5,7 +5,7 @@ OBJ = InterfaceGraphique.o ModelePhysique.o Parsing.o
 
 $(TARGET) : $(OBJ)
 	$(CC) $(OBJ) -o $(TARGET) -lm -lraylib 
-	rm -f $(OBJ)
+
 
 InterfaceGraphique.o : InterfaceGraphique.c
 	$(CC) $(CFLAGS) -c InterfaceGraphique.c

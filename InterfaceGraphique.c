@@ -36,7 +36,7 @@ int main(void)
     }
     add_asteroide(2500,500,800,&Soleil,liste);
 
-    InitWindow(ScreenWidth, ScreenHeight, "Simulation");
+    InitWindow(ScreenWidth, ScreenHeight, "Solares");
     SetWindowState(FLAG_WINDOW_RESIZABLE);
     SetWindowState(FLAG_FULLSCREEN_MODE);
     //Caméra
