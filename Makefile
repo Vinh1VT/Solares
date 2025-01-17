@@ -23,4 +23,4 @@ clean:
 l: $(TARGET)
 	make clean
 	make
-	./Simulation
+	./Solares
