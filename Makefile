@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall
-TARGET = Simulation
+TARGET = Solares
 OBJ = InterfaceGraphique.o ModelePhysique.o Parsing.o
 
 $(TARGET) : $(OBJ)
