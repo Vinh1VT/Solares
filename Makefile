@@ -1,10 +1,13 @@
 CC = gcc
-CFLAGS = -Wall
+CFLAGS = -Wall -g
 TARGET = Solares
 OBJ = InterfaceGraphique.o ModelePhysique.o Parsing.o
 
+all : $(TARGET)
+
+
 $(TARGET) : $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET) -lm -lraylib 
+	$(CC) $(OBJ) -o $(TARGET) -lm -lraylib -g
 
 static : $(OBJ)
 	$(CC) $(OBJ) -o $(TARGET) /usr/lib/libraylib.a -lm -pthread -ldl -lGL -lX11
